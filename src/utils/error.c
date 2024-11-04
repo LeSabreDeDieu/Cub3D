@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 09:15:02 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/04 08:44:56 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/11/04 09:07:50 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub_error.h"
+#include "libft.h"
 
-# include "libft.h"
-# include "mlx.h"
-
-# include <X11/keysym.h>
-
-typedef struct s_cub3d
+void	exit_error(int error)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-}				t_cub3d;
-
-int	windows_init(t_cub3d *cub3d);
-
-// EVENTS
-int	on_keypress(int keycode, t_cub3d *cub3d);
-int	on_destroy(t_cub3d *cub3d);
-
-#endif
+	if (error == NOTCUB)
+		ft_putstr_fd("Not a .cub file\n", 2);
+	exit(EXIT_FAILURE);
+}

@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub_error.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 09:15:02 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/04 08:39:56 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/11/04 08:48:42 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB_ERROR_H
+# define CUB_ERROR_H
 
-# include "libft.h"
-# include "mlx.h"
-
-# include <X11/keysym.h>
-
-typedef struct s_cub3d
+enum	e_errors
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-}				t_cub3d;
+	FAILURE = -1,
+	SUCCESS,
+	NOTCUB
+};
 
-int	windows_init(t_cub3d *cub3d);
+# define EXIT_FAILURE 1
+# define EXIT_SUCCESS 0
 
-// EVENTS
-int	on_keypress(int keycode, t_cub3d *cub3d);
-int	on_destroy(t_cub3d *cub3d);
+# define ERROR_MSG "Error\n"
+
+void	exit_error(int error);
 
 #endif

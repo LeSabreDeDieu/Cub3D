@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   windows.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 09:15:02 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/04 08:38:21 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/11/04 08:55:03 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
+#include "cub_error.h"
 
-# include "libft.h"
-# include "mlx.h"
-
-# include <X11/keysym.h>
-
-typedef struct s_cub3d
+int	windows_init(t_cub3d *data)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-}				t_cub3d;
+	int	width;
+	int	height;
 
-int	windows_init(t_cub3d *cub3d);
-
-// EVENTS
-int	on_keypress(int keycode, t_cub3d *cub3d);
-int	on_destroy(t_cub3d *cub3d);
-
-#endif
+	data->mlx_ptr = mlx_init();
+	if (!data->mlx_ptr)
+		return (FAILURE);
+	mlx_get_screen_size(data->mlx_ptr, &width, &height);
+	data->win_ptr = mlx_new_window(data->mlx_ptr, width, height, "cub3d");
+	if (!data->win_ptr)
+		return (free(data->mlx_ptr), FAILURE);
+	return (SUCCESS);
+}

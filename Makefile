@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/05/17 13:10:33 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/04 09:15:42 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,41 +15,60 @@
 #################
 
 # Directories
-SRC_SUBDIR	=	
-SRCDIR		=	./src
-INCDIR		=	./include
-LIBDIR		=	./lib
-OBJDIR		=	obj
+SRC_SUBDIR			=	init utils
+SRCDIR				=	./src
+INCDIR				=	./include
+LIBDIR				=	./libs
+OBJDIR				=	obj
 
 # Sources
 
+# init
+SRC_INIT_DIR		=	init
+SRC_INIT_LIST		=	windows.c
+SRC_INIT			=	$(addprefix $(SRC_INIT_DIR)/, $(SRC_INIT_LIST))
+
+# utils
+SRC_UTILS_DIR		=	utils
+SRC_UTILS_LIST		=	error.c		\
+						free_exit.c
+SRC_UTILS			=	$(addprefix $(SRC_UTILS_DIR)/, $(SRC_UTILS_LIST))
+
+SRC_LIST			=	$(SRC_INIT)			\
+						$(SRC_UTILS)		\
+						cub3d.c
+SRC					=	$(addprefix $(SRCDIR)/, $(SRC_LIST))
+
 # Objects
-OBJ_SUBDIRS	=	$(SRC_SUBDIR:%=$(OBJDIR)/%)
-OBJ		=	$(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+OBJ_SUBDIRS			=	$(SRC_SUBDIR:%=$(OBJDIR)/%)
+OBJ					=	$(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+DEP					=	$(OBJ:.o=.d)
 
 # Libraries
-LIBFT_DIR 	=	$(LIBDIR)/libft
-LIBFT 		=	$(LIBFT_DIR)/libft.a
+LIBFT_DIR 			=	$(LIBDIR)/libft
+LIBFT 				=	$(LIBFT_DIR)/libft.a
+MLX_DIR				=	$(LIBDIR)/minilibx
+MLX					=	$(MLX_DIR)/libmlx_Linux.a
 
 # Output
-NAME		=	
+NAME				=	cub3D
 
 # Compiler
-CC		=	cc
-CFLAGS		=	-Wall -Werror -Wextra -MMD 
-OPTIONS		=	-I $(INCDIR) -I $(LIBFT_DIR)/includes
-LFLAGS		=	-L $(LIBFT_DIR) -lft
+CC					=	cc
+CFLAGS				=	-Wall -Werror -Wextra -MMD 
+OPTIONS				=	-I $(INCDIR) -I $(LIBFT_DIR)/includes -I $(MLX_DIR)
+LFLAGS				=	-L $(LIBFT_DIR) -L $(MLX_DIR) -lft -lmlx -lX11 -lXext -lm
 
 # Progress bar
-COUNT		=	1
-TOTAL_FILES	=	$(shell find $(SRCDIR) -type f -name "*.c" | wc -l)
+COUNT				=	1
+TOTAL_FILES			=	$(shell find $(SRCDIR) -type f -name "*.c" | wc -l)
 
 # Colors
-RED		=	\033[0;31m
-GREEN		=	\033[0;32m
-YELLOW		=	\033[0;33m
-NC		=	\033[0m
-KL		=	\033[K
+RED					=	\033[0;31m
+GREEN				=	\033[0;32m
+YELLOW				=	\033[0;33m
+NC					=	\033[0m
+KL					=	\033[K
 
 #################
 ##  TARGETS    ##
@@ -88,9 +107,13 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 $(LIBFT):
 	@make -sC $(LIBFT_DIR)
 
+$(MLX):
+	@make -sC $(MLX_DIR)
+
 clean:
 	@rm -rf $(OBJDIR)
 	@make -sC $(LIBFT_DIR) clean
+	@make -sC $(MLX_DIR) clean
 	@echo "$(YELLOW)********* Suppression des fichiers objets *********$(NC)"
 
 fclean: clean
@@ -105,3 +128,4 @@ norminette:
 	@norminette src/ include/ lib/libft | grep -B 1 -e "Error" || echo "Tous les fichiers ont passé le check norminette !"
 
 .PHONY: check compile all clean fclean re norminette
+-include $(DEP)

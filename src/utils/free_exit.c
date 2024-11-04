@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   free_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 09:15:02 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/04 09:12:54 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/11/04 09:14:34 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "cub3d.h"
 
-# include "libft.h"
-# include "mlx.h"
-
-# include <X11/keysym.h>
-
-typedef struct s_cub3d
+int	on_destroy(t_cub3d *cub3d)
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-}				t_cub3d;
+	mlx_destroy_window(cub3d->mlx_ptr, cub3d->win_ptr);
+	mlx_destroy_display(cub3d->mlx_ptr);
+	free(cub3d->mlx_ptr);
+	exit(EXIT_SUCCESS);
+}
 
-int	windows_init(t_cub3d *cub3d);
-
-// EVENTS
-int	on_keypress(int keycode, t_cub3d *cub3d);
-int	on_destroy(t_cub3d *cub3d);
-
-#endif
+int	on_keypress(int keycode, t_cub3d *cub3d)
+{
+	if (keycode == XK_Escape)
+		on_destroy(cub3d);
+	return (EXIT_SUCCESS);
+}
