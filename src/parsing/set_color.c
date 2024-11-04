@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub_error.h                                        :+:      :+:    :+:   */
+/*   set_color.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:39:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 14:00:02 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/04 13:51:26 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/11/04 13:51:53 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_ERROR_H
-# define CUB_ERROR_H
+#include "cub3d.h"
+#include "cub_error.h"
 
-enum	e_errors
+int	set_color(t_texture_map *texture, char **split, int j)
 {
-	FAILURE = -1,
-	SUCCESS,
-	NOTCUB,
-	FILENOTFOUND
-};
+	int	color;
 
-# define EXIT_FAILURE 1
-# define EXIT_SUCCESS 0
-
-# define ERROR_MSG "Error\n"
-
-void	exit_error(int error);
-
-#endif
+	color = ft_atoi(split[j]);
+	if (color < 0 || color > 255)
+		return (FAILURE);
+	texture->color[j] = color;
+	return (SUCCESS);
+}

@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/04 09:15:42 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/04 14:24:06 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,19 +23,35 @@ OBJDIR				=	obj
 
 # Sources
 
-# init
+# TEST
+SRC_TEST_DIR		=	test
+SRC_TEST_LIST		=	print.c
+SRC_TEST			=	$(addprefix $(SRC_TEST_DIR)/, $(SRC_TEST_LIST))
+
+# INIT
 SRC_INIT_DIR		=	init
 SRC_INIT_LIST		=	windows.c
 SRC_INIT			=	$(addprefix $(SRC_INIT_DIR)/, $(SRC_INIT_LIST))
 
-# utils
+# UTILS
 SRC_UTILS_DIR		=	utils
-SRC_UTILS_LIST		=	error.c		\
+SRC_UTILS_LIST		=	error.c				\
 						free_exit.c
 SRC_UTILS			=	$(addprefix $(SRC_UTILS_DIR)/, $(SRC_UTILS_LIST))
 
+# PARSING
+SRC_PARSING_DIR		=	parsing
+SRC_PARSING_LIST	=	check_texture.c		\
+						get_map.c			\
+						get_texture.c		\
+						set_color.c			\
+						utils.c
+SRC_PARSING			=	$(addprefix $(SRC_PARSING_DIR)/, $(SRC_PARSING_LIST))
+
 SRC_LIST			=	$(SRC_INIT)			\
 						$(SRC_UTILS)		\
+						$(SRC_PARSING)		\
+						$(SRC_TEST)			\
 						cub3d.c
 SRC					=	$(addprefix $(SRCDIR)/, $(SRC_LIST))
 
@@ -55,7 +71,7 @@ NAME				=	cub3D
 
 # Compiler
 CC					=	cc
-CFLAGS				=	-Wall -Werror -Wextra -MMD 
+CFLAGS				=	-Wall -Werror -Wextra -MMD -g3
 OPTIONS				=	-I $(INCDIR) -I $(LIBFT_DIR)/includes -I $(MLX_DIR)
 LFLAGS				=	-L $(LIBFT_DIR) -L $(MLX_DIR) -lft -lmlx -lX11 -lXext -lm
 
