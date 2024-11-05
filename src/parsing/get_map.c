@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:54:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 15:01:36 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/05 08:20:41 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ static void	check_empty_line(t_cub3d *cube3d, char *map)
 
 static void	is_bordered(t_cub3d *cube3d, int i, int j)
 {
+	if (cube3d->map[i + 1] == NULL || cube3d->map[i - 1] == NULL
+		|| cube3d->map[i][j + 1] == 0 || cube3d->map[i][j - 1] == 0)
+	{
+		free_exit(cube3d, "Error\nMap not bordered by walls\n", EXIT_FAILURE);
+	}
 	if (ft_isspace(cube3d->map[i - 1][j])
 		|| ft_isspace(cube3d->map[i + 1][j])
 		|| ft_isspace(cube3d->map[i][j - 1])
@@ -66,17 +71,6 @@ static void	is_bordered(t_cub3d *cube3d, int i, int j)
 		|| cube3d->map[i - 1][j] == 0 || cube3d->map[i + 1][j] == 0
 		|| cube3d->map[i][j - 1] == 0 || cube3d->map[i][j + 1] == 0)
 	{
-		ft_printf("i = %d, j = %d\n", i, j);
-		ft_printf("cube3d->map[i][j] = %%%c%%\n", cube3d->map[i][j]);
-		ft_printf("cube3d->map[i][j] = %%%d%%\n", cube3d->map[i][j]);
-		ft_printf("cube3d->map[i - 1][j] = %%%c%%\n", cube3d->map[i - 1][j]);
-		ft_printf("cube3d->map[i - 1][j] = %%%d%%\n", cube3d->map[i - 1][j]);
-		ft_printf("cube3d->map[i + 1][j] = %%%c%%\n", cube3d->map[i + 1][j]);
-		ft_printf("cube3d->map[i + 1][j] = %%%d%%\n", cube3d->map[i + 1][j]);
-		ft_printf("cube3d->map[i][j - 1] = %%%c%%\n", cube3d->map[i][j - 1]);
-		ft_printf("cube3d->map[i][j - 1] = %%%d%%\n", cube3d->map[i][j - 1]);
-		ft_printf("cube3d->map[i][j + 1] = %%%c%%\n", cube3d->map[i][j + 1]);
-		ft_printf("cube3d->map[i][j + 1] = %%%d%%\n", cube3d->map[i][j + 1]);
 		free_exit(cube3d, "Error\nMap not bordered by walls\n", EXIT_FAILURE);
 	}
 }
