@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:46:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 15:09:16 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:38:08 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ static void	verif_nb_chars(t_cub3d *data, int count_player)
 
 static void	char_counter(t_cub3d *data, int *count_player, int i, int j)
 {
-	if (data->map[i][j] == 'N' || data->map[i][j] == 'S'
-		|| data->map[i][j] == 'E' || data->map[i][j] == 'W')
+	if (data->map.map[i][j] == 'N' || data->map.map[i][j] == 'S'
+		|| data->map.map[i][j] == 'E' || data->map.map[i][j] == 'W')
 		(*count_player)++;
 }
 
 static void	is_in_list(t_cub3d *data, char *chars, int i, int j)
 {
-	if (ft_strchr(chars, data->map[i][j]) == NULL)
+	if (ft_strchr(chars, data->map.map[i][j]) == NULL)
 		free_exit(data, "Error\nInvalid character in map\n", EXIT_FAILURE);
 }
 
@@ -53,10 +53,10 @@ void	check_chars(t_cub3d *data)
 	i = 0;
 	count_player = 0;
 	chars = "01NSEW \t\n\v\f\r";
-	while (data->map[i])
+	while (data->map.map[i])
 	{
 		j = 0;
-		while (data->map[i][j])
+		while (data->map.map[i][j])
 		{
 			is_in_list(data, chars, i, j);
 			char_counter(data, &count_player, i, j);

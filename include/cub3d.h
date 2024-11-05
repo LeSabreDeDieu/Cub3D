@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/05 08:23:48 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:42:14 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "img.h"
 # include "libft.h"
 # include "mlx.h"
 # include <X11/keysym.h>
+# include <stdio.h>
 
 typedef struct s_texture_map
 {
@@ -24,12 +26,20 @@ typedef struct s_texture_map
 	int				color[3];
 }					t_texture_map;
 
+typedef struct s_map
+{
+	char			**map;
+	int				width;
+	int				height;
+}					t_map;
+
 typedef struct s_cub3d
 {
 	void			*mlx_ptr;
-	void			*win_ptr;
+	void			*win_ptr[2];
 	t_texture_map	texture[6];
-	char			**map;
+	t_map			map;
+	t_img			img;
 }					t_cub3d;
 
 int					windows_init(t_cub3d *cub3d);

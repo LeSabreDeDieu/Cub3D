@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:15:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 14:31:09 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:44:44 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,13 @@ int	main(int argc, char *argv[])
 	close(fd);
 	print(cub3d);
 	windows_init(&cub3d);
-	mlx_hook(cub3d.win_ptr, KeyPress, KeyPressMask, &on_keypress, &cub3d);
-	mlx_hook(cub3d.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy,
+	create_img(&cub3d);
+	draw_map(&cub3d);
+	mlx_hook(cub3d.win_ptr[0], KeyPress, KeyPressMask, &on_keypress, &cub3d);
+	mlx_hook(cub3d.win_ptr[0], DestroyNotify, StructureNotifyMask, &on_destroy,
+		&cub3d);
+	mlx_hook(cub3d.win_ptr[1], KeyPress, KeyPressMask, &on_keypress, &cub3d);
+	mlx_hook(cub3d.win_ptr[1], DestroyNotify, StructureNotifyMask, &on_destroy,
 		&cub3d);
 	mlx_loop(cub3d.mlx_ptr);
 	return (EXIT_SUCCESS);

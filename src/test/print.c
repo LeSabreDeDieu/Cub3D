@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:35:07 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 14:21:44 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/05 10:38:31 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,5 @@ void	print(t_cub3d cub3d)
 		}
 		i++;
 	}
-	print_map(cub3d.map);
+	print_map(cub3d.map.map);
 }
