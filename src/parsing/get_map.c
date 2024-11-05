@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:54:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/05 10:37:26 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/05 11:26:38 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,11 +99,10 @@ static void	check_bordered(t_cub3d *cube3d)
 	cube3d->map.width = max;
 }
 
-void	check_valid_map(t_cub3d *cube3d, int fd)
+void	get_check_valid_map(t_cub3d *cube3d, int fd)
 {
 	char	*map_tmp;
 
-	// int		player_pos[2];
 	map_tmp = get_map(fd);
 	check_empty_line(cube3d, map_tmp);
 	cube3d->map.map = ft_split(map_tmp, '\n');
@@ -112,6 +111,5 @@ void	check_valid_map(t_cub3d *cube3d, int fd)
 		exit_error(FAILURE);
 	check_chars(cube3d);
 	check_bordered(cube3d);
-	// ft_bzero(player_pos, sizeof(int));
-	// get_player_pos(cube3d, player_pos);
+	get_player_pos(cube3d);
 }

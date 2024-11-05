@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   windows.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:38:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/05 10:52:27 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/05 11:18:37 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,10 @@
 
 int	windows_init(t_cub3d *data)
 {
-	int	width;
-	int	height;
-
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		return (FAILURE);
-	mlx_get_screen_size(data->mlx_ptr, &width, &height);
-	data->win_ptr[0] = mlx_new_window(data->mlx_ptr, width, height, "Cub3D");
+	data->win_ptr[0] = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
 	if (!data->win_ptr[0])
 		return (free(data->mlx_ptr), FAILURE);
 	data->win_ptr[1] = mlx_new_window(data->mlx_ptr, 528, 224, "Vue 2D");

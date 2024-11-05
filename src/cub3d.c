@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:15:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/05 10:44:44 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/05 15:05:27 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ int	main(int argc, char *argv[])
 		free_exit(&cub3d, "Error\nFile not found\n", EXIT_FAILURE);
 	get_all_texture(&cub3d, fd);
 	check_texture(&cub3d);
-	check_valid_map(&cub3d, fd);
+	get_check_valid_map(&cub3d, fd);
 	close(fd);
 	print(cub3d);
 	windows_init(&cub3d);
+	cub3d.player.d_pos_p.x = cos(cub3d.player.pa) * 0.1;
+	cub3d.player.d_pos_p.y = sin(cub3d.player.pa) * 0.1;
 	create_img(&cub3d);
 	draw_map(&cub3d);
 	mlx_hook(cub3d.win_ptr[0], KeyPress, KeyPressMask, &on_keypress, &cub3d);

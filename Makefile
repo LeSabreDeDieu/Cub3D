@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aditer <aditer@student.42.fr>              +#+  +:+       +#+         #
+#    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/05 09:22:23 by aditer           ###   ########.fr        #
+#    Updated: 2024/11/05 13:44:00 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,11 @@ SRC_INIT_DIR		=	init
 SRC_INIT_LIST		=	windows.c
 SRC_INIT			=	$(addprefix $(SRC_INIT_DIR)/, $(SRC_INIT_LIST))
 
+# RAYCASTING
+SRC_RAYCASTING_DIR		=	raycasting
+SRC_RAYCASTING_LIST		=	draw_line.c
+SRC_RAYCASTING			=	$(addprefix $(SRC_RAYCASTING_DIR)/, $(SRC_RAYCASTING_LIST))
+
 # UTILS
 SRC_UTILS_DIR		=	utils
 SRC_UTILS_LIST		=	error.c				\
@@ -48,6 +53,7 @@ SRC_UTILS			=	$(addprefix $(SRC_UTILS_DIR)/, $(SRC_UTILS_LIST))
 SRC_PARSING_DIR		=	parsing
 SRC_PARSING_LIST	=	check_texture.c		\
 						get_map.c			\
+						get_player_pos.c	\
 						get_texture.c		\
 						set_color.c			\
 						utils.c
@@ -58,6 +64,7 @@ SRC_LIST			=	$(SRC_INIT)			\
 						$(SRC_PARSING)		\
 						$(SRC_TEST)			\
 						$(SRC_MAP2D)		\
+						$(SRC_RAYCASTING)	\
 						cub3d.c
 SRC					=	$(addprefix $(SRCDIR)/, $(SRC_LIST))
 
