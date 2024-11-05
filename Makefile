@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
+#    By: aditer <aditer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/04 14:24:06 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/05 09:22:23 by aditer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,11 @@ LIBDIR				=	./libs
 OBJDIR				=	obj
 
 # Sources
+
+#MAP2D
+SRC_MAP2D_DIR		=	map2D
+SRC_MAP2D_LIST		=	map2D.c
+SRC_MAP2D			=	$(addprefix $(SRC_MAP2D_DIR)/, $(SRC_MAP2D_LIST))
 
 # TEST
 SRC_TEST_DIR		=	test
@@ -52,6 +57,7 @@ SRC_LIST			=	$(SRC_INIT)			\
 						$(SRC_UTILS)		\
 						$(SRC_PARSING)		\
 						$(SRC_TEST)			\
+						$(SRC_MAP2D)		\
 						cub3d.c
 SRC					=	$(addprefix $(SRCDIR)/, $(SRC_LIST))
 
