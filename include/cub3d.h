@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/05 15:04:53 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/06 08:50:00 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "mlx.h"
 # include <X11/keysym.h>
 # include <math.h>
+# include <stdbool.h>
 # include <stdio.h>
 
 # define HEIGHT 1080
@@ -52,6 +53,16 @@ typedef struct s_map
 	int				height;
 }					t_map;
 
+typedef struct s_key
+{
+	bool			w;
+	bool			a;
+	bool			s;
+	bool			d;
+	bool			left;
+	bool			right;
+}					t_key;
+
 typedef struct s_cub3d
 {
 	void			*mlx_ptr;
@@ -60,6 +71,7 @@ typedef struct s_cub3d
 	t_map			map;
 	t_img			img;
 	t_player		player;
+	t_key			key;
 }					t_cub3d;
 
 int					windows_init(t_cub3d *cub3d);
@@ -73,10 +85,7 @@ int					set_color(t_texture_map *texture, char **split, int j);
 // EVENTS
 int					on_destroy(t_cub3d *cub3d);
 int					on_keypress(int keycode, t_cub3d *cub3d);
-int					on_keypress_exit(int keycode, t_cub3d *cub3d);
-int					on_keypress_move(int keycode, t_cub3d *cub3d);
-int					on_keypress_rot(int keycode, t_cub3d *cub3d);
-
+int					on_keyrelease(int keycode, t_cub3d *cub3d);
 
 // UTILS
 size_t				ft_strlen_not_whitespace(const char *s);
@@ -85,6 +94,17 @@ void				free_exit(t_cub3d *cub3d, char *msg, int status);
 void				check_chars(t_cub3d *data);
 void				get_player_pos(t_cub3d *data);
 void				draw_line(t_cub3d *cub3d);
+int					update(t_cub3d *cub3d);
+
+//PLAYER MOVE
+void				player_move_forward(t_cub3d *cub3d);
+void				player_move_backward(t_cub3d *cub3d);
+void				player_move_left(t_cub3d *cub3d);
+void				player_move_right(t_cub3d *cub3d);
+
+// CAMERA ROT
+void				camera_rot_left(t_cub3d *cub3d);
+void				camera_rot_right(t_cub3d *cub3d);
 
 void				print(t_cub3d cub3d);
 

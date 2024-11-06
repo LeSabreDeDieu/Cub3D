@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:15:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/05 15:05:27 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/06 08:40:32 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ int	main(int argc, char *argv[])
 	mlx_hook(cub3d.win_ptr[1], KeyPress, KeyPressMask, &on_keypress, &cub3d);
 	mlx_hook(cub3d.win_ptr[1], DestroyNotify, StructureNotifyMask, &on_destroy,
 		&cub3d);
+	mlx_hook(cub3d.win_ptr[1], KeyRelease, KeyReleaseMask, &on_keyrelease,
+		&cub3d);
+	mlx_loop_hook(cub3d.mlx_ptr, &update, &cub3d);
 	mlx_loop(cub3d.mlx_ptr);
 	return (EXIT_SUCCESS);
 }

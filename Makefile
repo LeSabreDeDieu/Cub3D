@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/05 13:44:00 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/06 08:38:57 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,12 @@ SRC_RAYCASTING			=	$(addprefix $(SRC_RAYCASTING_DIR)/, $(SRC_RAYCASTING_LIST))
 
 # UTILS
 SRC_UTILS_DIR		=	utils
-SRC_UTILS_LIST		=	error.c				\
-						free_exit.c
+SRC_UTILS_LIST		=	camera_rot.c		\
+						error.c				\
+						free_exit.c			\
+						key_gestion.c		\
+						player_move.c		\
+						update.c
 SRC_UTILS			=	$(addprefix $(SRC_UTILS_DIR)/, $(SRC_UTILS_LIST))
 
 # PARSING
