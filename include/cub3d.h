@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 09:29:47 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/06 10:43:01 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ typedef struct s_cub3d
 	void			*win_ptr[2];
 	t_texture_map	texture[6];
 	t_map			map;
-	t_img			img;
+	t_img			img_2d;
+	t_img			img_3d;
 	t_player		player;
 	t_key			key;
 }					t_cub3d;
@@ -98,7 +99,7 @@ void				get_player_pos(t_cub3d *data);
 void				draw_line(t_cub3d *cub3d);
 int					update(t_cub3d *cub3d);
 
-//PLAYER MOVE
+// PLAYER MOVE
 void				player_move_forward(t_cub3d *cub3d);
 void				player_move_backward(t_cub3d *cub3d);
 void				player_move_left(t_cub3d *cub3d);

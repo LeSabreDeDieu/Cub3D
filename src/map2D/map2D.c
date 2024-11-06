@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:35:30 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/06 09:31:52 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/06 10:44:09 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	create_img(t_cub3d *cub3d)
+void	create_img(t_cub3d *cub3d, t_img *img)
 {
 	int	height;
 	int	width;
@@ -30,10 +30,9 @@ void	create_img(t_cub3d *cub3d)
 
 	i = 0;
 	mlx_get_screen_size(cub3d->mlx_ptr, &width, &height);
-	cub3d->img.img = mlx_new_image(cub3d->mlx_ptr, width / 2, height / 2);
-	cub3d->img.addr = mlx_get_data_addr(cub3d->img.img,
-			&cub3d->img.bits_per_pixel, &cub3d->img.line_length,
-			&cub3d->img.endian);
+	img->img = mlx_new_image(cub3d->mlx_ptr, width / 2, height / 2);
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
+			&img->line_length, &img->endian);
 }
 
 void	set_tile(t_cub3d *cub3d, int x, int y, int color)
@@ -50,7 +49,7 @@ void	set_tile(t_cub3d *cub3d, int x, int y, int color)
 		j = 1;
 		while (j < 15)
 		{
-			my_mlx_pixel_put(&cub3d->img, (x + j), (y + i), color);
+			my_mlx_pixel_put(&cub3d->img_2d, (x + j), (y + i), color);
 			j++;
 		}
 		i++;
@@ -71,8 +70,8 @@ void	set_tile_player(t_cub3d *cub3d, int color)
 		j = 0;
 		while (j < 8)
 		{
-			my_mlx_pixel_put(&cub3d->img, ((cub3d->player.pos.x * 16 - 4) + j),
-				((cub3d->player.pos.y * 16 - 4) + i), color);
+			my_mlx_pixel_put(&cub3d->img_2d, ((cub3d->player.pos.x * 16 - 4)
+					+ j), ((cub3d->player.pos.y * 16 - 4) + i), color);
 			j++;
 		}
 		i++;
@@ -90,7 +89,7 @@ void	draw_map(t_cub3d *cub3d)
 		j = 0;
 		while (j < 224)
 		{
-			my_mlx_pixel_put(&cub3d->img, i, j, 0x00000000);
+			my_mlx_pixel_put(&cub3d->img_2d, i, j, 0x00000000);
 			j++;
 		}
 		i++;
@@ -128,6 +127,6 @@ void	draw_map(t_cub3d *cub3d)
 		}
 		i++;
 	}
-	mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr[1], cub3d->img.img,
-		0, 0);
+	mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr[1],
+		cub3d->img_2d.img, 0, 0);
 }

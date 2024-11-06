@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:12:54 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 08:20:26 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/06 10:52:46 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ void	free_exit(t_cub3d *cub3d, char *msg, int status)
 
 int	on_destroy(t_cub3d *cub3d)
 {
-	if (cub3d->img.img)
-		mlx_destroy_image(cub3d->mlx_ptr, cub3d->img.img);
+	if (cub3d->img_2d.img)
+		mlx_destroy_image(cub3d->mlx_ptr, cub3d->img_2d.img);
+	if (cub3d->img_3d.img)
+		mlx_destroy_image(cub3d->mlx_ptr, cub3d->img_3d.img);
 	if (cub3d->win_ptr[0])
 		mlx_destroy_window(cub3d->mlx_ptr, cub3d->win_ptr[0]);
 	if (cub3d->win_ptr[1])

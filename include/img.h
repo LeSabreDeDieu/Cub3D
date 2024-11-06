@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   img.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:49:56 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/05 10:33:52 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/06 10:42:22 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_img
 }						t_img;
 
 void					my_mlx_pixel_put(t_img *data, int x, int y, int color);
-void					create_img(t_cub3d *cub3d);
+void					create_img(t_cub3d *cub3d, t_img *img);
 void					draw_map(t_cub3d *cub3d);
 
 #endif
