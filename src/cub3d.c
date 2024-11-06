@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:15:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 10:55:59 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/06 12:45:46 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	main(int argc, char *argv[])
 	windows_init(&cub3d);
 	cub3d.player.d_pos_p.x = cos(cub3d.player.pa) * 0.1;
 	cub3d.player.d_pos_p.y = sin(cub3d.player.pa) * 0.1;
-	create_img(&cub3d, &cub3d.img_2d);
-	create_img(&cub3d, &cub3d.img_3d);
+	create_img_2d(&cub3d, &cub3d.img_2d);
+	create_img_3d(&cub3d, &cub3d.img_3d);
 	draw_map(&cub3d);
 	mlx_hook(cub3d.win_ptr[0], KeyPress, KeyPressMask, &on_keypress, &cub3d);
 	mlx_hook(cub3d.win_ptr[0], DestroyNotify, StructureNotifyMask, &on_destroy,

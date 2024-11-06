@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:40:27 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 11:34:22 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/06 12:48:44 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	draw_line(t_cub3d *cub3d)
 	int		draw_start;
 	int		draw_end;
 	int		j;
+	int		k;
 	int		nb_ray;
 	float	angle;
 	int		color;
@@ -47,35 +48,45 @@ void	draw_line(t_cub3d *cub3d)
 		{
 			if (cub3d->map.map[(int)y / 16][(int)x / 16] == '1')
 				break ;
-			my_mlx_pixel_put(&cub3d->img_2d, (int)x, (int)y, 0x00FF0000);
+			my_mlx_pixel_put_2d(&cub3d->img_2d, (int)x, (int)y, 0x00FF0000);
 			x += dx;
 			y += dy;
 		}
 		dist = sqrt(pow(x - cub3d->player.pos.x * 16, 2) + pow(y
 					- cub3d->player.pos.y * 16, 2));
-		line_height = 64 * 528 / dist * 4;
+		line_height = 64 * 528 / dist;
 		draw_start = (HEIGHT / 2) - (line_height / 2);
 		draw_end = (HEIGHT / 2) + (line_height / 2);
 		j = 0;
 		while (j < HEIGHT)
 		{
-			if (j < draw_start)
+			k = 0;
+			while(k < 4)
 			{
-				color = 0x87CEEB;
-				my_mlx_pixel_put(&cub3d->img_3d, i, j, color);
-			}
-			else if (j >= draw_end)
-			{
-				color = 0x2E8B57;
-				my_mlx_pixel_put(&cub3d->img_3d, i, j, color);
+				if (j < draw_start)
+				{
+					color = 0x87CEEB;
+					my_mlx_pixel_put_3d(&cub3d->img_3d, i, j, color);
+				}
+				else if (j >= draw_end)
+				{
+					color = 0x2E8B57;
+					my_mlx_pixel_put_3d(&cub3d->img_3d, i, j, color);
+				}
+				k++;
 			}
 			j++;
 		}
 		j = draw_start;
 		while (j < draw_end)
 		{
-			color = 0x00FF0000;
-			my_mlx_pixel_put(&cub3d->img_3d, i, j, color);
+			k = 0;
+			while(k < 4)
+			{
+				color = 0x00FF0000;
+				my_mlx_pixel_put_3d(&cub3d->img_3d, i, j, color);
+				k++;
+			}
 			j++;
 		}
 		angle += angle_increment;
