@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:40:27 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 12:48:44 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/06 13:18:25 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	draw_line(t_cub3d *cub3d)
 	int		draw_start;
 	int		draw_end;
 	int		j;
-	int		k;
 	int		nb_ray;
 	float	angle;
+	float	cast_angle;
 	int		color;
 
 	float dx, dy, step, x, y;
@@ -54,39 +54,35 @@ void	draw_line(t_cub3d *cub3d)
 		}
 		dist = sqrt(pow(x - cub3d->player.pos.x * 16, 2) + pow(y
 					- cub3d->player.pos.y * 16, 2));
+		cast_angle = cub3d->player.pa - angle;
+		if (cast_angle < 0)
+			cast_angle += 2 * PI;
+		if (cast_angle > 2 * PI)
+			cast_angle -= 2 * PI;
+		dist *= cos(cast_angle);
 		line_height = 64 * 528 / dist;
 		draw_start = (HEIGHT / 2) - (line_height / 2);
 		draw_end = (HEIGHT / 2) + (line_height / 2);
 		j = 0;
 		while (j < HEIGHT)
 		{
-			k = 0;
-			while(k < 4)
+			if (j < draw_start)
 			{
-				if (j < draw_start)
-				{
-					color = 0x87CEEB;
-					my_mlx_pixel_put_3d(&cub3d->img_3d, i, j, color);
-				}
-				else if (j >= draw_end)
-				{
-					color = 0x2E8B57;
-					my_mlx_pixel_put_3d(&cub3d->img_3d, i, j, color);
-				}
-				k++;
+				color = 0x87CEEB;
+				my_mlx_pixel_put_3d(&cub3d->img_3d, i, j, color);
+			}
+			else if (j >= draw_end)
+			{
+				color = 0x2E8B57;
+				my_mlx_pixel_put_3d(&cub3d->img_3d, i, j, color);
 			}
 			j++;
 		}
 		j = draw_start;
 		while (j < draw_end)
 		{
-			k = 0;
-			while(k < 4)
-			{
-				color = 0x00FF0000;
-				my_mlx_pixel_put_3d(&cub3d->img_3d, i, j, color);
-				k++;
-			}
+			color = 0x00FF0000;
+			my_mlx_pixel_put_3d(&cub3d->img_3d, i, j, color);
 			j++;
 		}
 		angle += angle_increment;
