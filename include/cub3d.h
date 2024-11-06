@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 08:50:00 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/06 09:29:47 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ typedef struct s_player
 {
 	t_pos			pos;
 	t_pos			d_pos_p;
+	t_pos			d_pos_r;
+	t_pos			d_pos_l;
 	float			pa;
 }					t_player;
 

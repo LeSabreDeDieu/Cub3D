@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:35:30 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/05 15:08:53 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/06 09:31:52 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ void	set_tile(t_cub3d *cub3d, int x, int y, int color)
 	int	width;
 
 	mlx_get_screen_size(cub3d->mlx_ptr, &width, &height);
-	i = 0;
-	while (i < 16)
+	i = 1;
+	while (i < 15)
 	{
-		j = 0;
-		while (j < 16)
+		j = 1;
+		while (j < 15)
 		{
 			my_mlx_pixel_put(&cub3d->img, (x + j), (y + i), color);
 			j++;
