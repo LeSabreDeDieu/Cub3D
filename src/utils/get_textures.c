@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:15:17 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 16:42:36 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 17:00:40 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_img	*set_image(t_cub3d *cub3d, char *path)
 	img->img = mlx_xpm_file_to_image(cub3d->mlx_ptr, path, &img->width, &img->height);
 	if (!img->img)
 		exit_on_error(cub3d, ERROR_TEXTURE);
+	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	return (img);
 }
 
@@ -33,8 +34,10 @@ void	load_texture(t_cub3d *cub3d)
 	i = 0;
 	while (i < 6)
 	{
-		if (cub3d->texture[i]->path && cub3d->texture[i]->id[0] != 'C' && cub3d->texture[i]->id[0] != 'F') 
+		if (cub3d->texture[i]->path && cub3d->texture[i]->id[0] != 'C' && cub3d->texture[i]->id[0] != 'F')
 			cub3d->texture[i]->img = set_image(cub3d, cub3d->texture[i]->path);
+		else
+			cub3d->texture[i]->img = NULL;
 		i++;
 	}
 }
