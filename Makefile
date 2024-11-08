@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/08 15:58:16 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/08 16:33:57 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ DEP					=	$(OBJ:.o=.d)
 # Libraries
 LIBFT_DIR 			=	$(LIBDIR)/libft
 LIBFT 				=	$(LIBFT_DIR)/libft.a
-MLX_DIR				=	$(LIBDIR)/minilibx-linux
+MLX_DIR				=	$(LIBDIR)/minilibx
 MLX					=	$(MLX_DIR)/libmlx_Linux.a
 
 # Output
