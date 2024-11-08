@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 10:43:01 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 11:24:11 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,18 @@
 
 # define PI 3.14159265359
 
+# define FOV 60
+# define TILE_SIZE 64
+# define MOVE_SPEED 1
+# define ROT_SPEED 0.05
+
+enum e_texture
+{
+	NONE,
+	VERTICAL,
+	HORIZONTAL
+};
+
 typedef struct s_pos
 {
 	float			x;
@@ -36,10 +48,19 @@ typedef struct s_player
 {
 	t_pos			pos;
 	t_pos			d_pos_p;
-	t_pos			d_pos_r;
 	t_pos			d_pos_l;
+	t_pos			d_pos_r;
+	t_pos			move;
 	float			pa;
+	float			fov_rd;
 }					t_player;
+
+typedef struct s_ray
+{
+	float			angle;
+	float			dist;
+	int				wall;
+}					t_ray;
 
 typedef struct s_texture_map
 {
@@ -68,13 +89,14 @@ typedef struct s_key
 typedef struct s_cub3d
 {
 	void			*mlx_ptr;
-	void			*win_ptr[2];
+	void			*win_ptr;
 	t_texture_map	texture[6];
 	t_map			map;
 	t_img			img_2d;
 	t_img			img_3d;
 	t_player		player;
 	t_key			key;
+	t_ray			ray;
 }					t_cub3d;
 
 int					windows_init(t_cub3d *cub3d);
@@ -96,7 +118,7 @@ void				free_str_tab(char **tab);
 void				free_exit(t_cub3d *cub3d, char *msg, int status);
 void				check_chars(t_cub3d *data);
 void				get_player_pos(t_cub3d *data);
-void				draw_line(t_cub3d *cub3d);
+void				raycast(t_cub3d *cub3d);
 int					update(t_cub3d *cub3d);
 
 // PLAYER MOVE

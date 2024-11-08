@@ -6,60 +6,56 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:23:40 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 09:30:44 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 11:15:04 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	move_player(t_cub3d *cub3d)
+{
+	int	map_x;
+	int	map_y;
+	int new_x;
+	int new_y;
+
+	new_x = roundf(cub3d->player.pos.x + cub3d->player.move.x);
+	new_y = roundf(cub3d->player.pos.y + cub3d->player.move.y);
+	map_x = new_x / TILE_SIZE;
+	map_y = new_y / TILE_SIZE;
+	if (cub3d->map.map[map_y][map_x] != '1'
+		&& (cub3d->map.map[map_y][new_x / TILE_SIZE] != '1')
+		&& (cub3d->map.map[new_y / TILE_SIZE][map_x] != '1'))
+	{
+		cub3d->player.pos.x = new_x;
+		cub3d->player.pos.y = new_y;
+	}
+}
+
 void	player_move_forward(t_cub3d *cub3d)
 {
-	cub3d->player.pos.x += cub3d->player.d_pos_p.x;
-	if (cub3d->player.pos.x * 16 - 4 <= 0 || cub3d->player.pos.x * 16
-		+ 4 >= 528)
-		cub3d->player.pos.x -= cub3d->player.d_pos_p.x;
-	cub3d->player.pos.y += cub3d->player.d_pos_p.y;
-	if (cub3d->player.pos.y * 16 - 4 <= 0 || cub3d->player.pos.y * 16
-		+ 4 >= 224)
-		cub3d->player.pos.y -= cub3d->player.d_pos_p.y;
+	cub3d->player.move.x = cos(cub3d->player.pa) * MOVE_SPEED;
+	cub3d->player.move.y = sin(cub3d->player.pa) * MOVE_SPEED;
+	move_player(cub3d);
 }
 
 void	player_move_backward(t_cub3d *cub3d)
 {
-	cub3d->player.pos.x -= cub3d->player.d_pos_p.x;
-	if (cub3d->player.pos.x * 16 - 4 <= 0 || cub3d->player.pos.x * 16
-		+ 4 >= 528)
-		cub3d->player.pos.x += cub3d->player.d_pos_p.x;
-	cub3d->player.pos.y -= cub3d->player.d_pos_p.y;
-	if (cub3d->player.pos.y * 16 - 4 <= 0 || cub3d->player.pos.y * 16
-		+ 4 >= 224)
-		cub3d->player.pos.y += cub3d->player.d_pos_p.y;
+	cub3d->player.move.x = -cos(cub3d->player.pa) * MOVE_SPEED;
+	cub3d->player.move.y = -sin(cub3d->player.pa) * MOVE_SPEED;
+	move_player(cub3d);
 }
 
 void	player_move_left(t_cub3d *cub3d)
 {
-	cub3d->player.d_pos_l.x = cos(cub3d->player.pa - PI / 2) * 0.1;
-	cub3d->player.d_pos_l.y = sin(cub3d->player.pa - PI / 2) * 0.1;
-	cub3d->player.pos.x += cub3d->player.d_pos_l.x;
-	if (cub3d->player.pos.x * 16 - 4 <= 0 || cub3d->player.pos.x * 16
-		+ 4 >= 528)
-		cub3d->player.pos.x -= cub3d->player.d_pos_l.x;
-	cub3d->player.pos.y += cub3d->player.d_pos_l.y;
-	if (cub3d->player.pos.y * 16 - 4 <= 0 || cub3d->player.pos.y * 16
-		+ 4 >= 224)
-		cub3d->player.pos.y -= cub3d->player.d_pos_l.y;
+	cub3d->player.move.x = sin(cub3d->player.pa) * MOVE_SPEED;
+	cub3d->player.move.y = -cos(cub3d->player.pa) * MOVE_SPEED;
+	move_player(cub3d);
 }
 
 void	player_move_right(t_cub3d *cub3d)
 {
-	cub3d->player.d_pos_r.x = cos(cub3d->player.pa + PI / 2) * 0.1;
-	cub3d->player.d_pos_r.y = sin(cub3d->player.pa + PI / 2) * 0.1;
-	cub3d->player.pos.x += cub3d->player.d_pos_r.x;
-	if (cub3d->player.pos.x * 16 - 4 <= 0 || cub3d->player.pos.x * 16
-		+ 4 >= 528)
-		cub3d->player.pos.x -= cub3d->player.d_pos_r.x;
-	cub3d->player.pos.y += cub3d->player.d_pos_r.y;
-	if (cub3d->player.pos.y * 16 - 4 <= 0 || cub3d->player.pos.y * 16
-		+ 4 >= 224)
-		cub3d->player.pos.y -= cub3d->player.d_pos_r.y;
+	cub3d->player.move.x = -sin(cub3d->player.pa) * MOVE_SPEED;
+	cub3d->player.move.y = cos(cub3d->player.pa) * MOVE_SPEED;
+	move_player(cub3d);
 }

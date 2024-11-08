@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:35:30 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/06 12:45:39 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 11:26:13 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,10 @@ void	create_img_2d(t_cub3d *cub3d, t_img *img)
 
 void	create_img_3d(t_cub3d *cub3d, t_img *img)
 {
-	int	height;
-	int	width;
 	int	i;
 
 	i = 0;
-	mlx_get_screen_size(cub3d->mlx_ptr, &width, &height);
-	img->img = mlx_new_image(cub3d->mlx_ptr, width, height);
+	img->img = mlx_new_image(cub3d->mlx_ptr, WIDTH, HEIGHT);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 }
@@ -144,12 +141,12 @@ void	draw_map(t_cub3d *cub3d)
 				|| cub3d->map.map[i][j] == 'W' || cub3d->map.map[i][j] == 'E')
 			{
 				set_tile_player(cub3d, 0x00FF0000);
-				draw_line(cub3d);
+				raycast(cub3d);
 			}
 			j++;
 		}
 		i++;
 	}
-	mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr[1],
+	mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr,
 		cub3d->img_2d.img, 0, 0);
 }

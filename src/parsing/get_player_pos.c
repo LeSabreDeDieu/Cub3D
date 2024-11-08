@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:23 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/05 14:22:14 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 10:26:29 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ void	get_player_pos(t_cub3d *data)
 			if (data->map.map[i][j] == 'N' || data->map.map[i][j] == 'S'
 				|| data->map.map[i][j] == 'E' || data->map.map[i][j] == 'W')
 			{
-				data->player.pos.x = j + 0.5;
-				data->player.pos.y = i + 0.5;
+				data->player.pos.x = (j * TILE_SIZE) + TILE_SIZE / 2;
+				data->player.pos.y = (i * TILE_SIZE) + TILE_SIZE / 2;
+				data->player.fov_rd = (float)FOV * (PI / 180);
 				init_angle_start(data, i, j);
 				return ;
 			}

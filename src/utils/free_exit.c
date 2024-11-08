@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:12:54 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 10:52:46 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 11:26:08 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,8 @@ int	on_destroy(t_cub3d *cub3d)
 		mlx_destroy_image(cub3d->mlx_ptr, cub3d->img_2d.img);
 	if (cub3d->img_3d.img)
 		mlx_destroy_image(cub3d->mlx_ptr, cub3d->img_3d.img);
-	if (cub3d->win_ptr[0])
-		mlx_destroy_window(cub3d->mlx_ptr, cub3d->win_ptr[0]);
-	if (cub3d->win_ptr[1])
-		mlx_destroy_window(cub3d->mlx_ptr, cub3d->win_ptr[1]);
+	if (cub3d->win_ptr)
+		mlx_destroy_window(cub3d->mlx_ptr, cub3d->win_ptr);
 	if (cub3d->mlx_ptr)
 		mlx_destroy_display(cub3d->mlx_ptr);
 	free(cub3d->mlx_ptr);

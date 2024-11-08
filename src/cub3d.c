@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:15:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 12:45:46 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 11:24:46 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,11 @@ int	main(int argc, char *argv[])
 	close(fd);
 	print(cub3d);
 	windows_init(&cub3d);
-	cub3d.player.d_pos_p.x = cos(cub3d.player.pa) * 0.1;
-	cub3d.player.d_pos_p.y = sin(cub3d.player.pa) * 0.1;
-	create_img_2d(&cub3d, &cub3d.img_2d);
 	create_img_3d(&cub3d, &cub3d.img_3d);
-	draw_map(&cub3d);
-	mlx_hook(cub3d.win_ptr[0], KeyPress, KeyPressMask, &on_keypress, &cub3d);
-	mlx_hook(cub3d.win_ptr[0], DestroyNotify, StructureNotifyMask, &on_destroy,
+	mlx_hook(cub3d.win_ptr, KeyPress, KeyPressMask, &on_keypress, &cub3d);
+	mlx_hook(cub3d.win_ptr, KeyRelease, KeyReleaseMask, &on_keyrelease,
 		&cub3d);
-	mlx_hook(cub3d.win_ptr[1], KeyPress, KeyPressMask, &on_keypress, &cub3d);
-	mlx_hook(cub3d.win_ptr[1], DestroyNotify, StructureNotifyMask, &on_destroy,
-		&cub3d);
-	mlx_hook(cub3d.win_ptr[1], KeyRelease, KeyReleaseMask, &on_keyrelease,
+	mlx_hook(cub3d.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy,
 		&cub3d);
 	mlx_loop_hook(cub3d.mlx_ptr, &update, &cub3d);
 	mlx_loop(cub3d.mlx_ptr);
