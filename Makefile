@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/06 08:38:57 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/08 15:58:16 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRC_UTILS_DIR		=	utils
 SRC_UTILS_LIST		=	camera_rot.c		\
 						error.c				\
 						free_exit.c			\
+						get_textures.c		\
 						key_gestion.c		\
 						player_move.c		\
 						update.c
@@ -80,7 +81,7 @@ DEP					=	$(OBJ:.o=.d)
 # Libraries
 LIBFT_DIR 			=	$(LIBDIR)/libft
 LIBFT 				=	$(LIBFT_DIR)/libft.a
-MLX_DIR				=	$(LIBDIR)/minilibx
+MLX_DIR				=	$(LIBDIR)/minilibx-linux
 MLX					=	$(MLX_DIR)/libmlx_Linux.a
 
 # Output

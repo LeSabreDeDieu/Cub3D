@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:54:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/05 11:26:38 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 14:27:09 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ static void	check_empty_line(t_cub3d *cube3d, char *map)
 	int	i;
 
 	if (!map)
-		(free(map), free_exit(cube3d, "Error\nMap not found\n", EXIT_FAILURE));
+		(free(map), exit_on_error(cube3d, ERROR_MAP));
 	i = 0;
 	while (map[i])
 	{
 		if (map[i] == '\n' && map[i + 1] == '\n')
 		{
 			free(map);
-			free_exit(cube3d, "Error\nEmpty line in map\n", EXIT_FAILURE);
+			exit_on_error(cube3d, EMPTY_LINE_MAP);
 		}
 		i++;
 	}
@@ -62,7 +62,7 @@ static void	is_bordered(t_cub3d *cube3d, int i, int j)
 	if (cube3d->map.map[i + 1] == NULL || cube3d->map.map[i - 1] == NULL
 		|| cube3d->map.map[i][j + 1] == 0 || cube3d->map.map[i][j - 1] == 0)
 	{
-		free_exit(cube3d, "Error\nMap not bordered by walls\n", EXIT_FAILURE);
+		exit_on_error(cube3d, ERROR_MAP_BORDER);
 	}
 	if (ft_isspace(cube3d->map.map[i - 1][j]) || ft_isspace(cube3d->map.map[i
 			+ 1][j]) || ft_isspace(cube3d->map.map[i][j - 1])
@@ -70,7 +70,7 @@ static void	is_bordered(t_cub3d *cube3d, int i, int j)
 		- 1][j] == 0 || cube3d->map.map[i + 1][j] == 0 || cube3d->map.map[i][j
 		- 1] == 0 || cube3d->map.map[i][j + 1] == 0)
 	{
-		free_exit(cube3d, "Error\nMap not bordered by walls\n", EXIT_FAILURE);
+		exit_on_error(cube3d, ERROR_MAP_BORDER);
 	}
 }
 
@@ -108,7 +108,7 @@ void	get_check_valid_map(t_cub3d *cube3d, int fd)
 	cube3d->map.map = ft_split(map_tmp, '\n');
 	free(map_tmp);
 	if (!cube3d->map.map)
-		exit_error(FAILURE);
+		exit_on_error(cube3d, ERROR_MAP);
 	check_chars(cube3d);
 	check_bordered(cube3d);
 	get_player_pos(cube3d);

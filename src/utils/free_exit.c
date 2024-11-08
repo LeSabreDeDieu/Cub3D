@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:12:54 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 11:26:08 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 15:43:18 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,19 @@ void	free_str_tab(char **tab)
 	free(tab);
 }
 
-void	free_exit(t_cub3d *cub3d, char *msg, int status)
+void	free_exit(t_cub3d *cub3d, int status)
 {
 	int	i;
 
 	i = 0;
-	if (msg)
-		ft_putstr_fd(msg, 2);
 	while (i < 6)
 	{
-		if (cub3d->texture[i].id)
-			free(cub3d->texture[i].id);
-		if (cub3d->texture[i].path)
-			free(cub3d->texture[i].path);
+		if (cub3d->texture[i]->id)
+			free(cub3d->texture[i]->id);
+		if (cub3d->texture[i]->path)
+			free(cub3d->texture[i]->path);
+		free(cub3d->texture[i]->img);
+		free(cub3d->texture[i]);
 		i++;
 	}
 	if (cub3d->map.map)
@@ -54,6 +54,6 @@ int	on_destroy(t_cub3d *cub3d)
 	if (cub3d->mlx_ptr)
 		mlx_destroy_display(cub3d->mlx_ptr);
 	free(cub3d->mlx_ptr);
-	free_exit(cub3d, NULL, EXIT_SUCCESS);
+	free_exit(cub3d, EXIT_SUCCESS);
 	return (EXIT_SUCCESS);
 }

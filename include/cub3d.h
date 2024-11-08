@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 11:24:11 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 15:27:35 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,36 @@
 # include <stdio.h>
 
 # define HEIGHT 1080
-# define WIDTH 1080
+# define WIDTH 1920
 
 # define PI 3.14159265359
 
 # define FOV 60
 # define TILE_SIZE 64
-# define MOVE_SPEED 1
-# define ROT_SPEED 0.05
+# define MOVE_SPEED 12
+# define ROT_SPEED 0.1
 
-enum e_texture
+enum				e_wall
 {
 	NONE,
 	VERTICAL,
 	HORIZONTAL
 };
 
+enum				e_texture
+{
+	NORTH,
+	EAST,
+	SOUTH,
+	WEST,
+	FLOOR,
+	CEILING
+};
+
 typedef struct s_pos
 {
-	float			x;
-	float			y;
+	double			x;
+	double			y;
 }					t_pos;
 
 typedef struct s_player
@@ -66,6 +76,7 @@ typedef struct s_texture_map
 {
 	char			*id;
 	char			*path;
+	t_img			*img;
 	int				color[3];
 }					t_texture_map;
 
@@ -90,7 +101,7 @@ typedef struct s_cub3d
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
-	t_texture_map	texture[6];
+	t_texture_map	*texture[6];
 	t_map			map;
 	t_img			img_2d;
 	t_img			img_3d;
@@ -115,9 +126,9 @@ int					on_keyrelease(int keycode, t_cub3d *cub3d);
 // UTILS
 size_t				ft_strlen_not_whitespace(const char *s);
 void				free_str_tab(char **tab);
-void				free_exit(t_cub3d *cub3d, char *msg, int status);
 void				check_chars(t_cub3d *data);
 void				get_player_pos(t_cub3d *data);
+void				load_texture(t_cub3d *cube3d);
 void				raycast(t_cub3d *cub3d);
 int					update(t_cub3d *cub3d);
 
@@ -130,6 +141,9 @@ void				player_move_right(t_cub3d *cub3d);
 // CAMERA ROT
 void				camera_rot_left(t_cub3d *cub3d);
 void				camera_rot_right(t_cub3d *cub3d);
+
+// ERROR
+void				exit_on_error(t_cub3d *cub3d, char *error);
 
 void				print(t_cub3d cub3d);
 

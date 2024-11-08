@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:49:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 14:32:18 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 15:45:42 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,17 +120,14 @@ t_texture_map	*get_texture(int fd)
 
 void	get_all_texture(t_cub3d *cub3d, int fd)
 {
-	t_texture_map	*texture;
 	int				i;
 
 	i = 0;
 	while (i < 6)
 	{
-		texture = get_texture(fd);
-		if (!texture)
-			free_exit(cub3d, "Error\nTexture not found\n", EXIT_FAILURE);
-		cub3d->texture[i] = *texture;
-		free(texture);
+		cub3d->texture[i] = get_texture(fd);
+		if (!cub3d->texture[i])
+			exit_on_error(cub3d, ERROR_TEXTURE);
 		i++;
 	}
 }

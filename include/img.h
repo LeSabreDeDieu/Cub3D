@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:49:56 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/06 12:46:04 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/08 14:22:08 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_img
 	int					line_length;
 	int					endian;
 	int					tile_size;
+	int 				width;
+	int 				height;
 }						t_img;
 
 void					my_mlx_pixel_put_2d(t_img *data, int x, int y,
