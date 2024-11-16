@@ -6,13 +6,15 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:39:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 14:18:51 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:26:06 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_ERROR_H
 # define CUB_ERROR_H
 
+// -------------------------- enum section -------------------------- //
+// enum for the error
 enum e_error
 {
 	ERROR = -1,
@@ -20,6 +22,7 @@ enum e_error
 	FAILURE = 1
 };
 
+// -------------------------- define section -------------------------- //
 # define ERROR_MSG "Error\n"
 # define ERROR_OPENFILE "Failed to open file"
 # define ERROR_NOTCUB "File is not a .cub file"
@@ -40,4 +43,9 @@ enum e_error
 # define ERROR_MAP_PLAYER_MULTIPLE "Multiple player"
 # define ERROR_MAP_PLAYER_NONE "No player"
 
+// -------------------------- error functions -------------------------- //
+// ERROR
+void				exit_on_error(t_cub3d *cub3d, char *error);
+
+// ---------------------------- end of file ---------------------------- //
 #endif

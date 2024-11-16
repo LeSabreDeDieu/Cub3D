@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:15:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 16:40:56 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:26:37 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char *argv[])
 	print(cub3d);
 	windows_init(&cub3d);
 	load_texture(&cub3d);
-	create_img_3d(&cub3d, &cub3d.img_3d);
+	create_img(&cub3d, &cub3d.img_3d);
 	mlx_hook(cub3d.win_ptr, KeyPress, KeyPressMask, &on_keypress, &cub3d);
 	mlx_hook(cub3d.win_ptr, KeyRelease, KeyReleaseMask, &on_keyrelease,
 		&cub3d);

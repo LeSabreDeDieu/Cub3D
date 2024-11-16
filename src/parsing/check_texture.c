@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:26:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 15:33:08 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:06:26 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,8 @@ int	color_is_valid(t_texture_map *texture[6])
 	i = -1;
 	while (++i < 6)
 	{
-		if (ft_strncmp(texture[i]->id, "F", 1) == 0 || ft_strncmp(texture[i]->id,
-				"C", 1) == 0)
+		if (ft_strncmp(texture[i]->id, "F", 1) == 0
+			|| ft_strncmp(texture[i]->id, "C", 1) == 0)
 		{
 			if (check_color(texture, i) == FAILURE)
 				return (FAILURE);

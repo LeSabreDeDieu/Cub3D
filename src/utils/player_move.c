@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:23:40 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 11:15:04 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:08:21 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	move_player(t_cub3d *cub3d)
 {
 	int	map_x;
 	int	map_y;
-	int new_x;
-	int new_y;
+	int	new_x;
+	int	new_y;
 
 	new_x = roundf(cub3d->player.pos.x + cub3d->player.move.x);
 	new_y = roundf(cub3d->player.pos.y + cub3d->player.move.y);

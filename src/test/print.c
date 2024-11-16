@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:35:07 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 15:33:41 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:06:53 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	print(t_cub3d cub3d)
 	}
 	printf("\n");
 	print_map(cub3d.map.map);
-	printf("\nPosition player : %f, %f\n", cub3d.player.pos.x, cub3d.player.pos.y);
+	printf("\nPosition player : %f, %f\n",
+		cub3d.player.pos.x, cub3d.player.pos.y);
 }

@@ -6,15 +6,17 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:49:56 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/08 14:22:08 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/16 13:23:18 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef IMG_H
 # define IMG_H
 
+// -------------------------- define section -------------------------- //
 typedef struct s_cub3d	t_cub3d;
 
+// ---------------------------- image struct ---------------------------- //
 typedef struct s_img
 {
 	void				*img;
@@ -23,17 +25,16 @@ typedef struct s_img
 	int					line_length;
 	int					endian;
 	int					tile_size;
-	int 				width;
-	int 				height;
+	int					width;
+	int					height;
 }						t_img;
 
-void					my_mlx_pixel_put_2d(t_img *data, int x, int y,
-							int color);
-void					my_mlx_pixel_put_3d(t_img *data, int x, int y,
-							int color);
+// -------------------------- image functions -------------------------- //
+// create a new image
+void					create_img(t_cub3d *cub3d, t_img *img);
 
-void					create_img_2d(t_cub3d *cub3d, t_img *img);
-void					create_img_3d(t_cub3d *cub3d, t_img *img);
-void					draw_map(t_cub3d *cub3d);
+// put a pixel in the image
+void					my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
+// ---------------------------- end of file ---------------------------- //
 #endif
