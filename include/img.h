@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:49:56 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/16 13:23:18 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 09:54:40 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ void					create_img(t_cub3d *cub3d, t_img *img);
 
 // put a pixel in the image
 void					my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+// get the color of a pixel in the image
+int						get_texture_color(t_img *texture, float x_offset,
+							float y_offset);
 
 // ---------------------------- end of file ---------------------------- //
 #endif

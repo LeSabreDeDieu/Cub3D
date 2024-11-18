@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:20:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/16 13:27:15 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 09:56:32 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,40 @@ static void	draw_ceiling(t_cub3d *cub3d, int ray, int t_pix)
 				cub3d->texture[CEILING]->color[2]));
 }
 
-static void	draw_wall(t_cub3d *cub3d, int ray, double top_pixel,
-		double bottom_pixel)
+static float	get_x_offset(t_cub3d *cub3d, t_img *texture)
 {
-	int	color;
+	float	offset;
 
-	color = get_color(cub3d, cub3d->ray.wall);
+	if (cub3d->ray.wall == VERTICAL)
+		offset = fmodf(cub3d->ray.vert_y * (texture->width / TILE_SIZE),
+				TILE_SIZE);
+	else
+		offset = fmodf(cub3d->ray.hori_x * (texture->width / TILE_SIZE),
+				TILE_SIZE);
+	return (offset);
+}
+
+static void	draw_wall(t_cub3d *cub3d, double top_pixel, double bottom_pixel,
+		double wall_height)
+{
+	t_img	*texture;
+	double	x_offset;
+	double	y_offset;
+	double	factor;
+
+	texture = get_wall_render_texture(cub3d, cub3d->ray.wall);
+	factor = (double)texture->height / wall_height;
+	x_offset = get_x_offset(cub3d, texture);
+	y_offset = (top_pixel - (HEIGHT / 2) + (wall_height / 2)) * factor;
+	if (y_offset < 0)
+		y_offset = 0;
 	while (top_pixel < bottom_pixel)
-		my_mlx_pixel_put(&cub3d->img_3d, ray, top_pixel++, color);
+	{
+		my_mlx_pixel_put(&cub3d->img_3d, cub3d->ray.index, top_pixel,
+			get_texture_color(texture, x_offset, y_offset));
+		y_offset += factor;
+		top_pixel++;
+	}
 }
 
 void	render_wall(t_cub3d *cub3d, int ray)
@@ -61,7 +87,8 @@ void	render_wall(t_cub3d *cub3d, int ray)
 		bottom_pixel = HEIGHT;
 	if (top_pixel < 0)
 		top_pixel = 0;
-	draw_wall(cub3d, ray, top_pixel, bottom_pixel);
+	cub3d->ray.index = ray;
+	draw_wall(cub3d, top_pixel, bottom_pixel, wall_height);
 	draw_floor(cub3d, ray, bottom_pixel);
 	draw_ceiling(cub3d, ray, top_pixel);
 }

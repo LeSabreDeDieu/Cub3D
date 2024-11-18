@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/16 13:32:01 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 10:38:18 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,17 @@
 # include "mlx.h"
 # include "img.h"
 // -------------------------- define section -------------------------- //
+# define WIDTH 1080
 # define HEIGHT 1080
-# define WIDTH 1920
 
 # define PI 3.14159265359
 
 # define FOV 60
-# define TILE_SIZE 64
-# define MOVE_SPEED 4
+# define TILE_SIZE 32
+# define MOVE_SPEED 3
 # define ROT_SPEED 0.1
+# define FPS 60
+# define FRAME_TIME 16.67
 // -------------------------- enum section -------------------------- //
 // enum for the wall type
 enum				e_wall
@@ -74,9 +76,14 @@ typedef struct s_player
 // struct for the ray
 typedef struct s_ray
 {
+	float			hori_x;
+	float			hori_y;
+	float			vert_x;
+	float			vert_y;
 	float			angle;
 	float			dist;
 	int				wall;
+	int 			index;
 }					t_ray;
 
 // struct for the texture map
@@ -119,6 +126,7 @@ typedef struct s_cub3d
 	t_player		player;
 	t_key			key;
 	t_ray			ray;
+	int				nb_frame;
 }					t_cub3d;
 // -------------------------- function section -------------------------- //
 // INIT
@@ -160,7 +168,7 @@ int					unit_circle(float angle, char c);
 float				norm_angle(float angle);
 
 // GETTERS
-int					get_render_texture(t_cub3d *cub3d, int wall);
+t_img				*get_wall_render_texture(t_cub3d *cub3d, int wall);
 float				get_v_inter(t_cub3d *cub3d, float angle);
 float				get_h_inter(t_cub3d *cub3d, float angle);
 int					get_color(t_cub3d *cub3d, int wall);

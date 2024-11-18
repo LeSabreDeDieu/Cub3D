@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:23:14 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/16 13:16:04 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 10:05:12 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ float	get_v_inter(t_cub3d *cub3d, float angle)
 		v_x += x_step;
 		v_y += y_step;
 	}
+	cub3d->ray.vert_x = v_x;
+	cub3d->ray.vert_y = v_y;
 	return (sqrt(pow(v_x - cub3d->player.pos.x, 2) + pow(v_y
 				- cub3d->player.pos.y, 2)));
 }
@@ -58,28 +60,27 @@ float	get_h_inter(t_cub3d *cub3d, float angle)
 		h_x += x_step;
 		h_y += y_step;
 	}
+	cub3d->ray.hori_x = h_x;
+	cub3d->ray.hori_y = h_y;
 	return (sqrt(pow(h_x - cub3d->player.pos.x, 2) + pow(h_y
 				- cub3d->player.pos.y, 2)));
 }
 
-int	get_color(t_cub3d *cub3d, int wall)
+int	get_texture_color(t_img *texture, float x_offset, float y_offset)
 {
-	cub3d->ray.angle = norm_angle(cub3d->ray.angle);
-	if (wall == VERTICAL)
-	{
-		if (cub3d->ray.angle > PI / 2 && cub3d->ray.angle < 3 * (PI / 2))
-			return (0x00FF0000);
-		else
-			return (0x0000FF00);
-	}
-	else if (wall == HORIZONTAL)
-	{
-		if (cub3d->ray.angle > 0 && cub3d->ray.angle < PI)
-			return (0x000000FF);
-		else
-			return (0x00000000);
-	}
-	return (0);
+	int	color;
+	int	x;
+	int	y;
+
+	x = fmodf(x_offset, TILE_SIZE) * (texture->width / TILE_SIZE);
+	y = fmodf(y_offset, TILE_SIZE) * (texture->height / TILE_SIZE);
+	color = texture->addr[y * texture->line_length + x * texture->bits_per_pixel
+		/ 8];
+	color += texture->addr[y * texture->line_length + x
+		* texture->bits_per_pixel / 8 + 1] << 8;
+	color += texture->addr[y * texture->line_length + x
+		* texture->bits_per_pixel / 8 + 2] << 16;
+	return (color);
 }
 
 static t_img	*find_texture_by_id(t_cub3d *cub3d, char *direction)
@@ -98,6 +99,7 @@ static t_img	*find_texture_by_id(t_cub3d *cub3d, char *direction)
 
 t_img	*get_wall_render_texture(t_cub3d *cub3d, int wall)
 {
+	cub3d->ray.angle = norm_angle(cub3d->ray.angle);
 	if (wall == VERTICAL)
 	{
 		if (cub3d->ray.angle > PI / 2 && cub3d->ray.angle < 3 * (PI / 2))
