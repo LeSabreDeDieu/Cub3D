@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/04 14:24:06 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/18 14:15:05 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,76 +15,107 @@
 #################
 
 # Directories
-SRC_SUBDIR			=	init utils
-SRCDIR				=	./src
-INCDIR				=	./include
-LIBDIR				=	./libs
-OBJDIR				=	obj
+SRC_SUBDIR				=	game_engine image init parsing player raycasting utils
+SRCDIR					=	./src
+INCDIR					=	./include
+LIBDIR					=	./libs
+OBJDIR					=	obj
 
 # Sources
+#GAME_ENGINE
+SRC_GAME_ENGINE_DIR		=	game_engine
+SRC_GAME_ENGINE_LIST	=	free_engine.c		\
+							game_engine.c		\
+							key_gestion.c		\
+							update.c
+SRC_GAME_ENGINE			=	$(addprefix $(SRC_GAME_ENGINE_DIR)/, $(SRC_GAME_ENGINE_LIST))
 
-# TEST
-SRC_TEST_DIR		=	test
-SRC_TEST_LIST		=	print.c
-SRC_TEST			=	$(addprefix $(SRC_TEST_DIR)/, $(SRC_TEST_LIST))
+#IMAGE
+SRC_IMAGE_DIR			=	image
+SRC_IMAGE_LIST			=	create_image.c		\
+							get_textures.c		\
+							put_pixel.c
+SRC_IMAGE				=	$(addprefix $(SRC_IMAGE_DIR)/, $(SRC_IMAGE_LIST))
 
 # INIT
-SRC_INIT_DIR		=	init
-SRC_INIT_LIST		=	windows.c
-SRC_INIT			=	$(addprefix $(SRC_INIT_DIR)/, $(SRC_INIT_LIST))
-
-# UTILS
-SRC_UTILS_DIR		=	utils
-SRC_UTILS_LIST		=	error.c				\
-						free_exit.c
-SRC_UTILS			=	$(addprefix $(SRC_UTILS_DIR)/, $(SRC_UTILS_LIST))
+SRC_INIT_DIR			=	init
+SRC_INIT_LIST			=	init.c				\
+							windows.c
+SRC_INIT				=	$(addprefix $(SRC_INIT_DIR)/, $(SRC_INIT_LIST))
 
 # PARSING
-SRC_PARSING_DIR		=	parsing
-SRC_PARSING_LIST	=	check_texture.c		\
-						get_map.c			\
-						get_texture.c		\
-						set_color.c			\
-						utils.c
-SRC_PARSING			=	$(addprefix $(SRC_PARSING_DIR)/, $(SRC_PARSING_LIST))
+SRC_PARSING_DIR			=	parsing
+SRC_PARSING_LIST		=	check_texture.c		\
+							get_map.c			\
+							get_player_pos.c	\
+							get_texture.c		\
+							set_color.c			\
+							utils.c
+SRC_PARSING				=	$(addprefix $(SRC_PARSING_DIR)/, $(SRC_PARSING_LIST))
 
-SRC_LIST			=	$(SRC_INIT)			\
-						$(SRC_UTILS)		\
-						$(SRC_PARSING)		\
-						$(SRC_TEST)			\
-						cub3d.c
-SRC					=	$(addprefix $(SRCDIR)/, $(SRC_LIST))
+#PLAYER
+SRC_PLAYER_DIR			=	player
+SRC_PLAYER_LIST			=	camera_rot.c		\
+							player_move.c
+SRC_PLAYER				=	$(addprefix $(SRC_PLAYER_DIR)/, $(SRC_PLAYER_LIST))
+
+# RAYCASTING
+SRC_RAYCASTING_DIR		=	raycasting
+SRC_RAYCASTING_LIST		=	angle.c				\
+							checkers.c			\
+							draw_line.c			\
+							getters.c			\
+							render.c
+SRC_RAYCASTING			=	$(addprefix $(SRC_RAYCASTING_DIR)/, $(SRC_RAYCASTING_LIST))
+
+# UTILS
+SRC_UTILS_DIR			=	utils
+SRC_UTILS_LIST			=	create_color.c		\
+							error.c				\
+							free_exit.c
+SRC_UTILS				=	$(addprefix $(SRC_UTILS_DIR)/, $(SRC_UTILS_LIST))
+
+SRC_LIST				=	$(SRC_GAME_ENGINE)	\
+							$(SRC_IMAGE)		\
+							$(SRC_INIT)			\
+							$(SRC_PARSING)		\
+							$(SRC_PLAYER)		\
+							$(SRC_RAYCASTING)	\
+							$(SRC_UTILS)		\
+							cub3d.c
+SRC						=	$(addprefix $(SRCDIR)/, $(SRC_LIST))
 
 # Objects
-OBJ_SUBDIRS			=	$(SRC_SUBDIR:%=$(OBJDIR)/%)
-OBJ					=	$(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
-DEP					=	$(OBJ:.o=.d)
+OBJ_SUBDIRS				=	$(SRC_SUBDIR:%=$(OBJDIR)/%)
+OBJ						=	$(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+DEP						=	$(OBJ:.o=.d)
 
 # Libraries
-LIBFT_DIR 			=	$(LIBDIR)/libft
-LIBFT 				=	$(LIBFT_DIR)/libft.a
-MLX_DIR				=	$(LIBDIR)/minilibx
-MLX					=	$(MLX_DIR)/libmlx_Linux.a
+LIBFT_DIR 				=	$(LIBDIR)/libft
+LIBFT 					=	$(LIBFT_DIR)/libft.a
+MLX_DIR					=	$(LIBDIR)/minilibx
+MLX						=	$(MLX_DIR)/libmlx_Linux.a
 
 # Output
-NAME				=	cub3D
+NAME					=	cub3D
+NAME_BONUS				=	cub3D_bonus
 
 # Compiler
-CC					=	cc
-CFLAGS				=	-Wall -Werror -Wextra -MMD -g3
-OPTIONS				=	-I $(INCDIR) -I $(LIBFT_DIR)/includes -I $(MLX_DIR)
-LFLAGS				=	-L $(LIBFT_DIR) -L $(MLX_DIR) -lft -lmlx -lX11 -lXext -lm
+CC						=	cc
+CFLAGS					=	-Wall -Werror -Wextra -MMD -g3
+OPTIONS					=	-I $(INCDIR) -I $(LIBFT_DIR)/includes -I $(MLX_DIR)
+LFLAGS					=	-L $(LIBFT_DIR) -L $(MLX_DIR) -lft -lmlx -lX11 -lXext -lm
 
 # Progress bar
-COUNT				=	1
-TOTAL_FILES			=	$(shell find $(SRCDIR) -type f -name "*.c" | wc -l)
+COUNT					=	1
+TOTAL_FILES				=	$(shell find $(SRCDIR) -type f -name "*.c" | wc -l)
 
 # Colors
-RED					=	\033[0;31m
-GREEN				=	\033[0;32m
-YELLOW				=	\033[0;33m
-NC					=	\033[0m
-KL					=	\033[K
+RED						=	\033[0;31m
+GREEN					=	\033[0;32m
+YELLOW					=	\033[0;33m
+NC						=	\033[0m
+KL						=	\033[K
 
 #################
 ##  TARGETS    ##

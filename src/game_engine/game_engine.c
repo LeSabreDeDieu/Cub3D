@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   windows.c                                          :+:      :+:    :+:   */
+/*   game_engine.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:38:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:22 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/18 11:05:07 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/11/18 11:06:44 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "game_engine.h"
 
-int	windows_init(t_cub3d *data)
+void	game_engine(t_cub3d *cub3d)
 {
-	data->mlx_ptr = mlx_init();
-	if (!data->mlx_ptr)
-		return (FAILURE);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
-	if (!data->win_ptr)
-		return (free(data->mlx_ptr), FAILURE);
-	return (SUCCESS);
+	mlx_hook(cub3d->win_ptr, KeyPress, KeyPressMask, &on_keypress, cub3d);
+	mlx_hook(cub3d->win_ptr, KeyRelease, KeyReleaseMask, &on_keyrelease,
+		cub3d);
+	mlx_hook(cub3d->win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy,
+		cub3d);
+	mlx_loop_hook(cub3d->mlx_ptr, &update, cub3d);
+	mlx_loop(cub3d->mlx_ptr);
 }

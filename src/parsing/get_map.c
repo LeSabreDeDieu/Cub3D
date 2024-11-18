@@ -6,12 +6,11 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:54:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/05 08:20:41 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 11:13:23 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "cub_error.h"
 #include <fcntl.h>
 
 char	*get_map(int fd)
@@ -44,14 +43,14 @@ static void	check_empty_line(t_cub3d *cube3d, char *map)
 	int	i;
 
 	if (!map)
-		(free(map), free_exit(cube3d, "Error\nMap not found\n", EXIT_FAILURE));
+		(free(map), exit_on_error(cube3d, ERROR_MAP));
 	i = 0;
 	while (map[i])
 	{
 		if (map[i] == '\n' && map[i + 1] == '\n')
 		{
 			free(map);
-			free_exit(cube3d, "Error\nEmpty line in map\n", EXIT_FAILURE);
+			exit_on_error(cube3d, EMPTY_LINE_MAP);
 		}
 		i++;
 	}
@@ -59,54 +58,57 @@ static void	check_empty_line(t_cub3d *cube3d, char *map)
 
 static void	is_bordered(t_cub3d *cube3d, int i, int j)
 {
-	if (cube3d->map[i + 1] == NULL || cube3d->map[i - 1] == NULL
-		|| cube3d->map[i][j + 1] == 0 || cube3d->map[i][j - 1] == 0)
+	if (cube3d->map.map[i + 1] == NULL || cube3d->map.map[i - 1] == NULL
+		|| cube3d->map.map[i][j + 1] == 0 || cube3d->map.map[i][j - 1] == 0)
 	{
-		free_exit(cube3d, "Error\nMap not bordered by walls\n", EXIT_FAILURE);
+		exit_on_error(cube3d, ERROR_MAP_BORDER);
 	}
-	if (ft_isspace(cube3d->map[i - 1][j])
-		|| ft_isspace(cube3d->map[i + 1][j])
-		|| ft_isspace(cube3d->map[i][j - 1])
-		|| ft_isspace(cube3d->map[i][j + 1])
-		|| cube3d->map[i - 1][j] == 0 || cube3d->map[i + 1][j] == 0
-		|| cube3d->map[i][j - 1] == 0 || cube3d->map[i][j + 1] == 0)
+	if (ft_isspace(cube3d->map.map[i - 1][j]) || ft_isspace(cube3d->map.map[i
+			+ 1][j]) || ft_isspace(cube3d->map.map[i][j - 1])
+		|| ft_isspace(cube3d->map.map[i][j + 1]) || cube3d->map.map[i
+		- 1][j] == 0 || cube3d->map.map[i + 1][j] == 0 || cube3d->map.map[i][j
+		- 1] == 0 || cube3d->map.map[i][j + 1] == 0)
 	{
-		free_exit(cube3d, "Error\nMap not bordered by walls\n", EXIT_FAILURE);
+		exit_on_error(cube3d, ERROR_MAP_BORDER);
 	}
 }
 
 static void	check_bordered(t_cub3d *cube3d)
 {
-	int	i;
-	int	j;
+	size_t	max;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (cube3d->map[i])
+	max = 0;
+	while (cube3d->map.map[i])
 	{
 		j = 0;
-		while (cube3d->map[i][j])
+		while (cube3d->map.map[i][j])
 		{
-			if (cube3d->map[i][j] == '0')
+			if (cube3d->map.map[i][j] == '0')
 				is_bordered(cube3d, i, j);
+			if (ft_strlen(cube3d->map.map[i]) > max)
+				max = ft_strlen(cube3d->map.map[i]);
 			j++;
 		}
 		i++;
 	}
+	cube3d->map.height = i;
+	cube3d->map.width = max;
 }
 
-void	check_valid_map(t_cub3d *cube3d, int fd)
+void	get_check_valid_map(t_cub3d *cube3d, int fd)
 {
 	char	*map_tmp;
 
-	// int		player_pos[2];
 	map_tmp = get_map(fd);
 	check_empty_line(cube3d, map_tmp);
-	cube3d->map = ft_split(map_tmp, '\n');
+	cube3d->map.map = ft_split(map_tmp, '\n');
 	free(map_tmp);
-	if (!cube3d->map)
-		exit_error(FAILURE);
+	if (!cube3d->map.map)
+		exit_on_error(cube3d, ERROR_MAP);
 	check_chars(cube3d);
 	check_bordered(cube3d);
-	// ft_bzero(player_pos, sizeof(int));
-	// get_player_pos(cube3d, player_pos);
+	get_player_pos(cube3d);
 }
