@@ -1,4 +1,5 @@
- NO	./ressources/walls/north.xpm
+R	lol
+NO	./ressources/walls/north.xpm
 SO	./ressources/walls/south.xpm
 WE	./ressources/walls/west.xpm
 EA	./ressources/walls/east.xpm

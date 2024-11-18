@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:46:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:25 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 14:43:10 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ size_t	ft_strlen_not_whitespace(const char *s)
 static void	verif_nb_chars(t_cub3d *data, int count_player)
 {
 	if (count_player < 1)
-		exit_on_error(data, ERROR_MAP_PLAYER_NONE);
+		exit_on_error(data, ERROR_MAP_PLAYER_NONE, -1);
 	if (count_player > 1)
-		exit_on_error(data, ERROR_MAP_PLAYER_MULTIPLE);
+		exit_on_error(data, ERROR_MAP_PLAYER_MULTIPLE, -1);
 }
 
 static void	char_counter(t_cub3d *data, int *count_player, int i, int j)
@@ -40,7 +40,7 @@ static void	char_counter(t_cub3d *data, int *count_player, int i, int j)
 static void	is_in_list(t_cub3d *data, char *chars, int i, int j)
 {
 	if (ft_strchr(chars, data->map.map[i][j]) == NULL)
-		exit_on_error(data, ERROR_MAP_CHAR);
+		exit_on_error(data, ERROR_MAP_CHAR, -1);
 }
 
 void	check_chars(t_cub3d *data)

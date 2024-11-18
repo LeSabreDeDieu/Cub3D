@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:26:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 13:46:12 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 14:53:05 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	color_is_valid(t_texture_map *texture[6])
 	return (SUCCESS);
 }
 
-void	check_texture(t_cub3d *cub3d)
+void	check_texture(t_cub3d *cub3d, int fd)
 {
 	int	i;
 
@@ -104,13 +104,13 @@ void	check_texture(t_cub3d *cub3d)
 	while (i < 6)
 	{
 		if (!cub3d->texture[i]->id || !cub3d->texture[i]->path)
-			exit_on_error(cub3d, ERROR_MISS_TEXTURE);
+			exit_on_error(cub3d, ERROR_MISS_TEXTURE, fd);
 		i++;
 	}
 	if (is_right_name(cub3d->texture) == FAILURE)
-		exit_on_error(cub3d, ERROR_WRONG_TEXTURE);
+		exit_on_error(cub3d, ERROR_WRONG_TEXTURE, fd);
 	if (is_in_double(cub3d->texture) == FAILURE)
-		exit_on_error(cub3d, ERROR_DOUBLE_TEXTURE);
+		exit_on_error(cub3d, ERROR_DOUBLE_TEXTURE, fd);
 	if (color_is_valid(cub3d->texture) == FAILURE)
-		exit_on_error(cub3d, ERROR_COLOR);
+		exit_on_error(cub3d, ERROR_COLOR, fd);
 }

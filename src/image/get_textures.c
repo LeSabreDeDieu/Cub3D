@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:15:17 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:32 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 14:43:10 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ t_img	*set_image(t_cub3d *cub3d, char *path)
 
 	img = ft_calloc(1, sizeof(t_img));
 	if (!img)
-		exit_on_error(cub3d, ERROR_MALLOC);
+		exit_on_error(cub3d, ERROR_MALLOC, -1);
 	img->img = mlx_xpm_file_to_image(cub3d->mlx_ptr, path,
 			&img->width, &img->height);
 	if (!img->img)
-		exit_on_error(cub3d, ERROR_TEXTURE);
+		exit_on_error(cub3d, ERROR_TEXTURE, -1);
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 	return (img);
