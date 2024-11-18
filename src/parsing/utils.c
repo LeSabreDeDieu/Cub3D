@@ -6,12 +6,11 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:46:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 14:25:39 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 11:13:25 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "cub_error.h"
 
 size_t	ft_strlen_not_whitespace(const char *s)
 {

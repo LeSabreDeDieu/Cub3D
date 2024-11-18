@@ -6,12 +6,15 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:39:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/16 13:26:06 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 11:26:14 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB_ERROR_H
 # define CUB_ERROR_H
+
+// -------------------------- structure section -------------------------- //
+typedef struct s_cub3d	t_cub3d;
 
 // -------------------------- enum section -------------------------- //
 // enum for the error
@@ -46,6 +49,7 @@ enum e_error
 // -------------------------- error functions -------------------------- //
 // ERROR
 void				exit_on_error(t_cub3d *cub3d, char *error);
+void				usage(void);
 
 // ---------------------------- end of file ---------------------------- //
 #endif

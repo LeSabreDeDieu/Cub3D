@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 10:38:18 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 11:28:14 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 
+# include "cub_error.h"
 # include "libft.h"
 # include "mlx.h"
 # include "img.h"
@@ -83,7 +84,7 @@ typedef struct s_ray
 	float			angle;
 	float			dist;
 	int				wall;
-	int 			index;
+	int				index;
 }					t_ray;
 
 // struct for the texture map
@@ -131,6 +132,7 @@ typedef struct s_cub3d
 // -------------------------- function section -------------------------- //
 // INIT
 int					windows_init(t_cub3d *cub3d);
+void				init_project(t_cub3d *cub3d, char *argv[]);
 
 // PARSING
 void				check_texture(t_cub3d *cub3d);
@@ -140,8 +142,6 @@ int					set_color(t_texture_map *texture, char **split, int j);
 
 // EVENTS
 int					on_destroy(t_cub3d *cub3d);
-int					on_keypress(int keycode, t_cub3d *cub3d);
-int					on_keyrelease(int keycode, t_cub3d *cub3d);
 
 // UTILS
 size_t				ft_strlen_not_whitespace(const char *s);

@@ -6,12 +6,11 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:20:41 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/06 08:27:48 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 11:13:30 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "cub_error.h"
 
 int	on_keypress(int keycode, t_cub3d *cub3d)
 {

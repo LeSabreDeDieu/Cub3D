@@ -6,12 +6,11 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:15:17 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/16 13:07:52 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 11:13:32 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "cub_error.h"
 
 t_img	*set_image(t_cub3d *cub3d, char *path)
 {

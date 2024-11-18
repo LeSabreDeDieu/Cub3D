@@ -6,12 +6,11 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:54:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 14:27:09 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 11:13:23 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "cub_error.h"
 #include <fcntl.h>
 
 char	*get_map(int fd)

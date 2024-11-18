@@ -6,12 +6,11 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:26:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/16 13:06:26 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 11:13:22 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "cub_error.h"
 
 int	is_right_name(t_texture_map *texture[6])
 {

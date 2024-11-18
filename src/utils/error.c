@@ -6,13 +6,20 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:44:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 14:20:24 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 11:26:08 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_error(char *error)
+void	usage(void)
+{
+	ft_putstr_fd(ERROR_MSG, 2);
+	ft_putstr_fd("Usage: ./cub3D <map.cub>\n", 2);
+	exit(EXIT_FAILURE);
+}
+
+static void	print_error(char *error)
 {
 	printf("Error\n%s\n", error);
 }
