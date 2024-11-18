@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   windows.c                                          :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:38:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 11:26:14 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/16 13:18:52 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/11/16 13:20:20 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "cub_error.h"
 
-int	windows_init(t_cub3d *data)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	data->mlx_ptr = mlx_init();
-	if (!data->mlx_ptr)
-		return (FAILURE);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
-	if (!data->win_ptr)
-		return (free(data->mlx_ptr), FAILURE);
-	return (SUCCESS);
+	char	*dst;
+
+	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

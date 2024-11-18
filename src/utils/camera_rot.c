@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   windows.c                                          :+:      :+:    :+:   */
+/*   camera_rot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:38:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/08 11:26:14 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/06 08:26:27 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/11/08 12:51:00 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "cub_error.h"
 
-int	windows_init(t_cub3d *data)
+void	camera_rot_left(t_cub3d *cub3d)
 {
-	data->mlx_ptr = mlx_init();
-	if (!data->mlx_ptr)
-		return (FAILURE);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D");
-	if (!data->win_ptr)
-		return (free(data->mlx_ptr), FAILURE);
-	return (SUCCESS);
+	cub3d->player.pa -= 0.05;
+	if (cub3d->player.pa < 0)
+		cub3d->player.pa += 2 * PI;
+}
+
+void	camera_rot_right(t_cub3d *cub3d)
+{
+	cub3d->player.pa += 0.05;
+	if (cub3d->player.pa > 2 * PI)
+		cub3d->player.pa -= 2 * PI;
 }

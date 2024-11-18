@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:15:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/04 14:31:09 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 10:13:45 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,24 @@ int	main(int argc, char *argv[])
 	ft_bzero(&cub3d, sizeof(t_cub3d));
 	str = argv[1] + (ft_strlen(argv[1]) - 4);
 	if (str && ft_strncmp(str, ".cub", 4) != 0)
-		exit_error(NOTCUB);
+		exit_on_error(&cub3d, ERROR_NOTCUB);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		free_exit(&cub3d, "Error\nFile not found\n", EXIT_FAILURE);
+		exit_on_error(&cub3d, ERROR_OPENFILE);
 	get_all_texture(&cub3d, fd);
 	check_texture(&cub3d);
-	check_valid_map(&cub3d, fd);
+	get_check_valid_map(&cub3d, fd);
 	close(fd);
 	print(cub3d);
 	windows_init(&cub3d);
+	load_texture(&cub3d);
+	create_img(&cub3d, &cub3d.img_3d);
 	mlx_hook(cub3d.win_ptr, KeyPress, KeyPressMask, &on_keypress, &cub3d);
+	mlx_hook(cub3d.win_ptr, KeyRelease, KeyReleaseMask, &on_keyrelease,
+		&cub3d);
 	mlx_hook(cub3d.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy,
 		&cub3d);
+	mlx_loop_hook(cub3d.mlx_ptr, &update, &cub3d);
 	mlx_loop(cub3d.mlx_ptr);
 	return (EXIT_SUCCESS);
 }

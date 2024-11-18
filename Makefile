@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/04 14:24:06 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/16 13:32:50 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,36 +22,59 @@ LIBDIR				=	./libs
 OBJDIR				=	obj
 
 # Sources
-
 # TEST
 SRC_TEST_DIR		=	test
 SRC_TEST_LIST		=	print.c
 SRC_TEST			=	$(addprefix $(SRC_TEST_DIR)/, $(SRC_TEST_LIST))
+
+#IMAGE
+SRC_IMAGE_DIR		=	image
+SRC_IMAGE_LIST		=	create_image.c		\
+						put_pixel.c
+SRC_IMAGE			=	$(addprefix $(SRC_IMAGE_DIR)/, $(SRC_IMAGE_LIST))
 
 # INIT
 SRC_INIT_DIR		=	init
 SRC_INIT_LIST		=	windows.c
 SRC_INIT			=	$(addprefix $(SRC_INIT_DIR)/, $(SRC_INIT_LIST))
 
+# RAYCASTING
+SRC_RAYCASTING_DIR		=	raycasting
+SRC_RAYCASTING_LIST		=	angle.c			\
+							checkers.c		\
+							draw_line.c		\
+							getters.c		\
+							render.c
+SRC_RAYCASTING			=	$(addprefix $(SRC_RAYCASTING_DIR)/, $(SRC_RAYCASTING_LIST))
+
 # UTILS
 SRC_UTILS_DIR		=	utils
-SRC_UTILS_LIST		=	error.c				\
-						free_exit.c
+SRC_UTILS_LIST		=	camera_rot.c		\
+						create_color.c		\
+						error.c				\
+						free_exit.c			\
+						get_textures.c		\
+						key_gestion.c		\
+						player_move.c		\
+						update.c
 SRC_UTILS			=	$(addprefix $(SRC_UTILS_DIR)/, $(SRC_UTILS_LIST))
 
 # PARSING
 SRC_PARSING_DIR		=	parsing
 SRC_PARSING_LIST	=	check_texture.c		\
 						get_map.c			\
+						get_player_pos.c	\
 						get_texture.c		\
 						set_color.c			\
 						utils.c
 SRC_PARSING			=	$(addprefix $(SRC_PARSING_DIR)/, $(SRC_PARSING_LIST))
 
-SRC_LIST			=	$(SRC_INIT)			\
+SRC_LIST			=	$(SRC_IMAGE)		\
+						$(SRC_INIT)			\
 						$(SRC_UTILS)		\
 						$(SRC_PARSING)		\
 						$(SRC_TEST)			\
+						$(SRC_RAYCASTING)	\
 						cub3d.c
 SRC					=	$(addprefix $(SRCDIR)/, $(SRC_LIST))
 
