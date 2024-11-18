@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:37:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:08:21 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 12:15:55 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	update(t_cub3d *cub3d)
 {
 	if (cub3d->nb_frame >= FRAME_TIME)
 	{
-		mlx_destroy_image(cub3d->mlx_ptr, cub3d->img_3d.img);
-		create_img(cub3d, &cub3d->img_3d);
+		mlx_destroy_image(cub3d->mlx_ptr, cub3d->img.img);
+		create_img(cub3d, &cub3d->img);
 		if (cub3d->key.left)
 			camera_rot_left(cub3d);
 		if (cub3d->key.right)
@@ -32,7 +32,7 @@ int	update(t_cub3d *cub3d)
 			player_move_right(cub3d);
 		raycast(cub3d);
 		mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr,
-			cub3d->img_3d.img, 0, 0);
+			cub3d->img.img, 0, 0);
 		cub3d->nb_frame = 0;
 	}
 	cub3d->nb_frame++;

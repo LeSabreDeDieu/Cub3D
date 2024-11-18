@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:20:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 09:56:32 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 12:15:55 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	draw_floor(t_cub3d *cub3d, int ray, int b_pix)
 
 	i = b_pix;
 	while (i < HEIGHT)
-		my_mlx_pixel_put(&cub3d->img_3d, ray, i++,
+		my_mlx_pixel_put(&cub3d->img, ray, i++,
 			create_rgb(cub3d->texture[FLOOR]->color[0],
 				cub3d->texture[FLOOR]->color[1],
 				cub3d->texture[FLOOR]->color[2]));
@@ -30,7 +30,7 @@ static void	draw_ceiling(t_cub3d *cub3d, int ray, int t_pix)
 
 	i = 0;
 	while (i < t_pix)
-		my_mlx_pixel_put(&cub3d->img_3d, ray, i++,
+		my_mlx_pixel_put(&cub3d->img, ray, i++,
 			create_rgb(cub3d->texture[CEILING]->color[0],
 				cub3d->texture[CEILING]->color[1],
 				cub3d->texture[CEILING]->color[2]));
@@ -65,7 +65,7 @@ static void	draw_wall(t_cub3d *cub3d, double top_pixel, double bottom_pixel,
 		y_offset = 0;
 	while (top_pixel < bottom_pixel)
 	{
-		my_mlx_pixel_put(&cub3d->img_3d, cub3d->ray.index, top_pixel,
+		my_mlx_pixel_put(&cub3d->img, cub3d->ray.index, top_pixel,
 			get_texture_color(texture, x_offset, y_offset));
 		y_offset += factor;
 		top_pixel++;

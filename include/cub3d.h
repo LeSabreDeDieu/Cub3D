@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:28:14 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 13:09:32 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 # define CUB3D_H
 
 // -------------------------- include section -------------------------- //
+# include "cub_error.h"
+# include "game_engine.h"
+# include "img.h"
+# include "libft.h"
+# include "mlx.h"
+# include "player.h"
 # include <X11/keysym.h>
 # include <math.h>
 # include <stdbool.h>
 # include <stdio.h>
-
-# include "cub_error.h"
-# include "libft.h"
-# include "mlx.h"
-# include "img.h"
 // -------------------------- define section -------------------------- //
 # define WIDTH 1080
 # define HEIGHT 1080
@@ -55,24 +56,17 @@ enum				e_texture
 	CEILING
 };
 // -------------------------- struct section -------------------------- //
-// struct for the position
-typedef struct s_pos
-{
-	double			x;
-	double			y;
-}					t_pos;
 
-// struct for the player
-typedef struct s_player
+// struct for the key
+typedef struct s_key
 {
-	t_pos			pos;
-	t_pos			d_pos_p;
-	t_pos			d_pos_l;
-	t_pos			d_pos_r;
-	t_pos			move;
-	float			pa;
-	float			fov_rd;
-}					t_player;
+	bool			w;
+	bool			a;
+	bool			s;
+	bool			d;
+	bool			left;
+	bool			right;
+}					t_key;
 
 // struct for the ray
 typedef struct s_ray
@@ -104,17 +98,6 @@ typedef struct s_map
 	int				height;
 }					t_map;
 
-// struct for the key
-typedef struct s_key
-{
-	bool			w;
-	bool			a;
-	bool			s;
-	bool			d;
-	bool			left;
-	bool			right;
-}					t_key;
-
 // struct for the cub3d
 typedef struct s_cub3d
 {
@@ -122,8 +105,7 @@ typedef struct s_cub3d
 	void			*win_ptr;
 	t_texture_map	*texture[6];
 	t_map			map;
-	t_img			img_2d;
-	t_img			img_3d;
+	t_img			img;
 	t_player		player;
 	t_key			key;
 	t_ray			ray;
@@ -140,17 +122,11 @@ void				get_all_texture(t_cub3d *cub3d, int fd);
 void				get_check_valid_map(t_cub3d *cube3d, int fd);
 int					set_color(t_texture_map *texture, char **split, int j);
 
-// EVENTS
-int					on_destroy(t_cub3d *cub3d);
-
 // UTILS
 size_t				ft_strlen_not_whitespace(const char *s);
-void				free_str_tab(char **tab);
 void				check_chars(t_cub3d *data);
 void				get_player_pos(t_cub3d *data);
-void				load_texture(t_cub3d *cube3d);
 void				raycast(t_cub3d *cub3d);
-int					update(t_cub3d *cub3d);
 
 // RGB
 int					create_rgb(int r, int g, int b);
@@ -173,18 +149,9 @@ float				get_v_inter(t_cub3d *cub3d, float angle);
 float				get_h_inter(t_cub3d *cub3d, float angle);
 int					get_color(t_cub3d *cub3d, int wall);
 
-// PLAYER MOVE
-void				player_move_forward(t_cub3d *cub3d);
-void				player_move_backward(t_cub3d *cub3d);
-void				player_move_left(t_cub3d *cub3d);
-void				player_move_right(t_cub3d *cub3d);
-
-// CAMERA ROT
-void				camera_rot_left(t_cub3d *cub3d);
-void				camera_rot_right(t_cub3d *cub3d);
-
 // free
 void				free_str_tab(char **tab);
+void				free_exit(t_cub3d *cub3d, int status);
 
 void				print(t_cub3d cub3d);
 // ---------------------------- end of file ---------------------------- //

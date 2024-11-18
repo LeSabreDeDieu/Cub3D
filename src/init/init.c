@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:09:47 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:21 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 12:15:55 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	init_project(t_cub3d *cub3d, char *argv[])
 	close(fd);
 	windows_init(cub3d);
 	load_texture(cub3d);
-	create_img(cub3d, &cub3d->img_3d);
+	create_img(cub3d, &cub3d->img);
 }

@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/18 11:23:10 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/18 14:15:05 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ OBJDIR					=	obj
 # Sources
 #GAME_ENGINE
 SRC_GAME_ENGINE_DIR		=	game_engine
-SRC_GAME_ENGINE_LIST	=	game_engine.c		\
+SRC_GAME_ENGINE_LIST	=	free_engine.c		\
+							game_engine.c		\
 							key_gestion.c		\
 							update.c
 SRC_GAME_ENGINE			=	$(addprefix $(SRC_GAME_ENGINE_DIR)/, $(SRC_GAME_ENGINE_LIST))
@@ -74,11 +75,6 @@ SRC_UTILS_LIST			=	create_color.c		\
 							free_exit.c
 SRC_UTILS				=	$(addprefix $(SRC_UTILS_DIR)/, $(SRC_UTILS_LIST))
 
-# TEST
-SRC_TEST_DIR			=	test
-SRC_TEST_LIST			=	print.c
-SRC_TEST				=	$(addprefix $(SRC_TEST_DIR)/, $(SRC_TEST_LIST))
-
 SRC_LIST				=	$(SRC_GAME_ENGINE)	\
 							$(SRC_IMAGE)		\
 							$(SRC_INIT)			\
@@ -86,7 +82,6 @@ SRC_LIST				=	$(SRC_GAME_ENGINE)	\
 							$(SRC_PLAYER)		\
 							$(SRC_RAYCASTING)	\
 							$(SRC_UTILS)		\
-							$(SRC_TEST)			\
 							cub3d.c
 SRC						=	$(addprefix $(SRCDIR)/, $(SRC_LIST))
 
