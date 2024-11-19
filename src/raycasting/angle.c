@@ -6,11 +6,21 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:22:16 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/14 19:22:51 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 19:10:56 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+float	rad_to_deg(float rad)
+{
+	return (rad * 180 / PI);
+}
+
+float	deg_to_rad(float deg)
+{
+	return (deg * PI / 180);
+}
 
 int	unit_circle(float angle, char c)
 {

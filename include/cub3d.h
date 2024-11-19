@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 13:09:32 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 19:36:35 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@
 # include <stdbool.h>
 # include <stdio.h>
 // -------------------------- define section -------------------------- //
-# define WIDTH 1080
+# define WIDTH 1920
 # define HEIGHT 1080
 
 # define PI 3.14159265359
 
 # define FOV 60
 # define TILE_SIZE 32
-# define MOVE_SPEED 3
-# define ROT_SPEED 0.1
+# define MOVE_SPEED 1
+# define ROT_SPEED 0.02
 # define FPS 60
-# define FRAME_TIME 16.67
+# define FRAME_TIME 1
 // -------------------------- enum section -------------------------- //
 // enum for the wall type
 enum				e_wall
@@ -66,6 +66,8 @@ typedef struct s_key
 	bool			d;
 	bool			left;
 	bool			right;
+	bool			shift;
+	bool			ctrl;
 }					t_key;
 
 // struct for the ray
@@ -142,6 +144,8 @@ int					inter_check(float angle, float *inter, float *step,
 // ANGLE
 int					unit_circle(float angle, char c);
 float				norm_angle(float angle);
+float				deg_to_rad(float deg);
+float				rad_to_deg(float rad);
 
 // GETTERS
 t_img				*get_wall_render_texture(t_cub3d *cub3d, int wall);

@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:20:41 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:30 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/18 19:40:28 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,10 @@ int	on_keypress(int keycode, t_cub3d *cub3d)
 		cub3d->key.left = true;
 	if (keycode == XK_Right)
 		cub3d->key.right = true;
+	if ((keycode == XK_Shift_L || keycode == XK_Shift_R) && !cub3d->key.ctrl)
+		cub3d->key.shift = true;
+	if ((keycode == XK_Control_L || keycode == XK_Control_R) && !cub3d->key.shift)
+		cub3d->key.ctrl = true;
 	return (EXIT_SUCCESS);
 }
 
@@ -45,5 +49,9 @@ int	on_keyrelease(int keycode, t_cub3d *cub3d)
 		cub3d->key.left = false;
 	if (keycode == XK_Right)
 		cub3d->key.right = false;
+	if (keycode == XK_Shift_L || keycode == XK_Shift_R)
+		cub3d->key.shift = false;
+	if (keycode == XK_Control_L || keycode == XK_Control_R)
+		cub3d->key.ctrl = false;
 	return (EXIT_SUCCESS);
 }
