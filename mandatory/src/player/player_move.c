@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:23:40 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 13:03:36 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 13:21:48 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,16 @@
 
 void	move_player(t_cub3d *cub3d)
 {
-	// Calcul des nouvelles positions avec déplacement
-	float new_x = cub3d->player.pos.x + cub3d->player.move.x;
-	float new_y = cub3d->player.pos.y + cub3d->player.move.y;
+	float	new_x;
+	float	new_y;
 
-	// Vérification pour chaque direction
-	// Si on se déplace en X (à l'ouest ou à l'est)
+	new_x = cub3d->player.pos.x + cub3d->player.move.x;
+	new_y = cub3d->player.pos.y + cub3d->player.move.y;
 	if (!check_collision(cub3d, new_x, cub3d->player.pos.y))
 		cub3d->player.pos.x = new_x;
-
-	// Si on se déplace en Y (au nord ou au sud)
 	if (!check_collision(cub3d, cub3d->player.pos.x, new_y))
 		cub3d->player.pos.y = new_y;
 }
-
-
 
 void	player_move_forward(t_cub3d *cub3d)
 {
