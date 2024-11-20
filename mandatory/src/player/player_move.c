@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:23:40 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 10:34:52 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 13:03:36 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,21 @@
 
 void	move_player(t_cub3d *cub3d)
 {
-	int	new_x;
-	int	new_y;
-	int	map_x;
-	int	map_y;
+	// Calcul des nouvelles positions avec déplacement
+	float new_x = cub3d->player.pos.x + cub3d->player.move.x;
+	float new_y = cub3d->player.pos.y + cub3d->player.move.y;
 
-	new_x = roundf(cub3d->player.pos.x + cub3d->player.move.x);
-	new_y = roundf(cub3d->player.pos.y + cub3d->player.move.y);
-	map_x = (int)((new_x - 0.5) / TILE_SIZE);
-	map_y = (int)((new_y - 0.5) / TILE_SIZE);
-	if (!check_collision(cub3d, map_x, map_y))
-	{
+	// Vérification pour chaque direction
+	// Si on se déplace en X (à l'ouest ou à l'est)
+	if (!check_collision(cub3d, new_x, cub3d->player.pos.y))
 		cub3d->player.pos.x = new_x;
+
+	// Si on se déplace en Y (au nord ou au sud)
+	if (!check_collision(cub3d, cub3d->player.pos.x, new_y))
 		cub3d->player.pos.y = new_y;
-	}
 }
+
+
 
 void	player_move_forward(t_cub3d *cub3d)
 {

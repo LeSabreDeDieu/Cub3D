@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 08:40:30 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 13:14:26 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,20 @@
 # include <stdbool.h>
 # include <stdio.h>
 // -------------------------- define section -------------------------- //
-# define WIDTH 1080
-# define HEIGHT 1080
+# define WIDTH 2460
+# define HEIGHT 1400
 
 # define PI 3.14159265359
 
 /*
-	MAC PARAMS : MOVESPEED = 4, ROTSPEED = 0.05
+	MAC SAYF PARAMS : MOVESPEED = 2, ROTSPEED = 0.04
 	DELL PARAMS : MOVESPEED = 1, ROTSPEED = 0.01
+	MAC PARAMS : MOVESPEED = 4, ROTSPEED = 0.05
 */
 # define FOV 60
 # define TILE_SIZE 32
-# define MOVE_SPEED 4
-# define ROT_SPEED 0.05
+# define MOVE_SPEED 2
+# define ROT_SPEED 0.04
 # define FPS 60
 # define FRAME_TIME 16.67
 // -------------------------- enum section -------------------------- //
