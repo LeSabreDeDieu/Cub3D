@@ -6,11 +6,11 @@
 /*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:44:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 17:01:33 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/20 17:26:03 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	usage(void)
 {

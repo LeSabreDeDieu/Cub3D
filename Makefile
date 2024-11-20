@@ -6,7 +6,7 @@
 #    By: aditer <aditer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/20 16:26:21 by aditer           ###   ########.fr        #
+#    Updated: 2024/11/20 17:30:41 by aditer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,6 +124,7 @@ SRC_INIT_BONUS				=	$(addprefix $(SRC_INIT_BONUS_DIR)/, $(SRC_INIT_BONUS_LIST))
 # PARSING
 SRC_PARSING_BONUS_DIR		=	parsing
 SRC_PARSING_BONUS_LIST		=	check_texture.c				\
+								get_map_utils.c				\
 								get_map.c					\
 								get_player_pos.c			\
 								get_texture.c				\
@@ -297,9 +298,11 @@ fclean_bonus: clean_bonus
 
 re: fclean compile
 
+re_bonus: fclean_bonus compile_bonus
+
 norminette:
 	@echo "$(YELLOW)********* Exécution de norminette *********$(NC)"
 	@norminette src/ include/ lib/libft | grep -B 1 -e "Error" || echo "Tous les fichiers ont passé le check norminette !"
 
-.PHONY: check compile all clean fclean re norminette
+.PHONY: check check_bonus compile compile_bonus all bonus clean clean_bonus fclean fclean_bonus re re_bonus norminette
 -include $(DEP)

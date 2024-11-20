@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 13:18:52 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 10:56:58 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 17:26:03 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {

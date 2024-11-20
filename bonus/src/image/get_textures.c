@@ -6,11 +6,11 @@
 /*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:15:17 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 16:14:21 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/20 17:26:03 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 t_img	*set_image(t_cub3d *cub3d, char *path)
 {

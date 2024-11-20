@@ -6,11 +6,11 @@
 /*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:20:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 17:15:47 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/20 17:26:03 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 static void	draw_floor(t_cub3d *cub3d, int ray, int b_pix)
 {

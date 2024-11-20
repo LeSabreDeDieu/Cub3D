@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_collision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 13:39:34 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 13:22:17 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 17:26:03 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	check_collision(t_cub3d *cub3d, float x, float y)
 {
