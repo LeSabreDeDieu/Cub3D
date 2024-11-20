@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:46:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:25 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 16:54:29 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,38 +30,35 @@ static void	verif_nb_chars(t_cub3d *data, int count_player)
 		exit_on_error(data, ERROR_MAP_PLAYER_MULTIPLE);
 }
 
-static void	char_counter(t_cub3d *data, int *count_player, int i, int j)
+static void	char_counter(char *map, int *count_player, int i)
 {
-	if (data->map.map[i][j] == 'N' || data->map.map[i][j] == 'S'
-		|| data->map.map[i][j] == 'E' || data->map.map[i][j] == 'W')
+	if (map[i] == 'N' || map[i] == 'S' || map[i] == 'E' || map[i] == 'W')
 		(*count_player)++;
 }
 
-static void	is_in_list(t_cub3d *data, char *chars, int i, int j)
+static void	is_in_list(t_cub3d *data, char c, char *chars, char *map_orig)
 {
-	if (ft_strchr(chars, data->map.map[i][j]) == NULL)
+
+	if (ft_strchr(chars, c) == NULL)
+	{
+		free(map_orig);
 		exit_on_error(data, ERROR_MAP_CHAR);
+	}
 }
 
-void	check_chars(t_cub3d *data)
+void	check_chars(t_cub3d *data, char *map_orig, char *map_copy)
 {
 	int		i;
-	int		j;
 	char	*chars;
 	int		count_player;
 
 	i = 0;
 	count_player = 0;
 	chars = "01NSEW \t\n\v\f\r";
-	while (data->map.map[i])
+	while (map_copy[i])
 	{
-		j = 0;
-		while (data->map.map[i][j])
-		{
-			is_in_list(data, chars, i, j);
-			char_counter(data, &count_player, i, j);
-			j++;
-		}
+		is_in_list(data, map_copy[i], chars, map_orig);
+		char_counter(map_copy, &count_player, i);
 		i++;
 	}
 	verif_nb_chars(data, count_player);

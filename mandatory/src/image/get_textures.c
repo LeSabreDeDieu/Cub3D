@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_textures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:15:17 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:32 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 16:14:21 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ t_img	*set_image(t_cub3d *cub3d, char *path)
 	img->img = mlx_xpm_file_to_image(cub3d->mlx_ptr, path,
 			&img->width, &img->height);
 	if (!img->img)
+	{
+		free(img);
 		exit_on_error(cub3d, ERROR_TEXTURE);
+	}
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 	return (img);

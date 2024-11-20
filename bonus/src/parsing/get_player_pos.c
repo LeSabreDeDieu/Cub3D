@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_player_pos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 11:24:23 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 15:59:01 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/20 10:11:25 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "cub3d.h"
 
 void	init_angle_start(t_cub3d *data, int i, int j)
 {

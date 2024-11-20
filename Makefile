@@ -6,7 +6,7 @@
 #    By: aditer <aditer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/20 16:05:01 by aditer           ###   ########.fr        #
+#    Updated: 2024/11/20 16:26:21 by aditer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC_INIT					=	$(addprefix $(SRC_INIT_DIR)/, $(SRC_INIT_LIST))
 # PARSING
 SRC_PARSING_DIR				=	parsing
 SRC_PARSING_LIST			=	check_texture.c				\
+								get_map_utils.c				\
 								get_map.c					\
 								get_player_pos.c			\
 								get_texture.c				\

@@ -6,11 +6,11 @@
 /*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:49:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 15:59:01 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/20 17:06:47 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "cub3d.h"
 #include <fcntl.h>
 #include <stdio.h>
 
@@ -119,14 +119,18 @@ t_texture_map	*get_texture(int fd)
 
 void	get_all_texture(t_cub3d *cub3d, int fd)
 {
-	int				i;
+	int	i;
 
 	i = 0;
 	while (i < 6)
 	{
 		cub3d->texture[i] = get_texture(fd);
 		if (!cub3d->texture[i])
+		{
+			clean_gnl(fd);
+			close(fd);
 			exit_on_error(cub3d, ERROR_TEXTURE);
+		}
 		i++;
 	}
 }
