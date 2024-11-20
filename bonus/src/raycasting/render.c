@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:20:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 12:15:55 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 15:59:01 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 static void	draw_floor(t_cub3d *cub3d, int ray, int b_pix)
 {

@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   check_collision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:15:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:28:35 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/19 13:39:34 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/11/20 15:59:01 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "game_engine.h"
+#include "cub3d_bonus.h"
 
-int	main(int argc, char *argv[])
+int	check_collision(t_cub3d *cub3d, float x, float y)
 {
-	t_cub3d	cub3d;
+	int	map_x;
+	int	map_y;
 
-	if (argc != 2)
-		usage();
-	init_project(&cub3d, argv);
-	//print(cub3d);
-	game_engine(&cub3d);
-	return (EXIT_SUCCESS);
+	map_x = (int)(x / TILE_SIZE);
+	map_y = (int)(y / TILE_SIZE);
+	return (cub3d->map.map[map_y][map_x] == '1');
 }

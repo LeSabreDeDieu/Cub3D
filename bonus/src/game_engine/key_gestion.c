@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   key_gestion.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:20:41 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/19 09:40:38 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 15:59:01 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	on_keypress(int keycode, t_cub3d *cub3d)
 {
@@ -30,7 +30,8 @@ int	on_keypress(int keycode, t_cub3d *cub3d)
 		cub3d->key.right = true;
 	if ((keycode == XK_Shift_L || keycode == XK_Shift_R) && !cub3d->key.ctrl)
 		cub3d->key.shift = true;
-	if ((keycode == XK_Control_L || keycode == XK_Control_R) && !cub3d->key.shift)
+	if ((keycode == XK_Control_L || keycode == XK_Control_R)
+		&& !cub3d->key.shift)
 		cub3d->key.ctrl = true;
 	return (EXIT_SUCCESS);
 }

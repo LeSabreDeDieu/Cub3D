@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:26:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 13:46:12 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 15:59:01 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	is_right_name(t_texture_map *texture[6])
 {

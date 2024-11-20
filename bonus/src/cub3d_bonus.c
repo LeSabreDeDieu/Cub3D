@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel.c                                        :+:      :+:    :+:   */
+/*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 13:18:52 by sgabsi            #+#    #+#             */
+/*   Created: 2024/11/04 08:15:19 by sgabsi            #+#    #+#             */
 /*   Updated: 2024/11/20 15:59:01 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
+#include "game_engine.h"
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+int	main(int argc, char *argv[])
 {
-	char	*dst;
+	t_cub3d	cub3d;
 
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	if (argc != 2)
+		usage();
+	init_project(&cub3d, argv);
+	game_engine(&cub3d);
+	return (EXIT_SUCCESS);
 }

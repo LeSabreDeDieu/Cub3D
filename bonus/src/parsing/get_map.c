@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:54:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:23 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 15:59:01 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 #include <fcntl.h>
 
 char	*get_map(int fd)
@@ -86,7 +86,9 @@ static void	check_bordered(t_cub3d *cube3d)
 		j = 0;
 		while (cube3d->map.map[i][j])
 		{
-			if (cube3d->map.map[i][j] == '0')
+			if (cube3d->map.map[i][j] == '0' || cube3d->map.map[i][j] == 'N'
+				|| cube3d->map.map[i][j] == 'S' || cube3d->map.map[i][j] == 'W'
+				|| cube3d->map.map[i][j] == 'E')
 				is_bordered(cube3d, i, j);
 			if (ft_strlen(cube3d->map.map[i]) > max)
 				max = ft_strlen(cube3d->map.map[i]);

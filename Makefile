@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
+#    By: aditer <aditer@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 16:28:59 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/20 08:31:00 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/20 16:05:01 by aditer           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,7 +105,7 @@ SRC_GAME_ENGINE_BONUS_LIST	=	free_engine.c				\
 								game_engine.c				\
 								key_gestion.c				\
 								update.c
-SRC_GAME_BONUS_ENGINE		=	$(addprefix $(SRC_GAME_ENGINE_BONUS_DIR)/, $(SRC_GAME_ENGINE_BONUS_LIST))
+SRC_GAME_ENGINE_BONUS		=	$(addprefix $(SRC_GAME_ENGINE_BONUS_DIR)/, $(SRC_GAME_ENGINE_BONUS_LIST))
 
 #IMAGE
 SRC_IMAGE_BONUS_DIR			=	image
@@ -188,11 +188,13 @@ NAME_BONUS					=	cub3D_bonus
 CC							=	cc
 CFLAGS						=	-Wall -Werror -Wextra -MMD -g3
 OPTIONS						=	-I $(INCDIR) -I $(LIBFT_DIR)/includes -I $(MLX_DIR)
+OPTIONS_BONUS				=	-I $(INCDIR_BONUS) -I $(LIBFT_DIR)/includes -I $(MLX_DIR)
 LFLAGS						=	-L $(LIBFT_DIR) -L $(MLX_DIR) -lft -lmlx -lX11 -lXext -lm
 
 # Progress bar
 COUNT						=	1
 TOTAL_FILES					=	$(shell find $(SRCDIR) -type f -name "*.c" | wc -l)
+TOTAL_FILES_BONUS			=	$(shell find $(SRCDIR_BONUS) -type f -name "*.c" | wc -l)
 
 # Colors
 RED							=	\033[0;31m
@@ -206,8 +208,10 @@ KL							=	\033[K
 #################
 
 all: check
+bonus: check_bonus
 
 compile: pre_comp $(LIBFT) $(MLX) $(NAME)
+compile_bonus: pre_comp_bonus $(LIBFT) $(MLX) $(NAME_BONUS)
 
 check:
 	@if [ -f "$(NAME)" ] && [ -z "$(shell find $(SRCDIR) -type f -name "*.c" -newer $(NAME) 2>/dev/null)" ] && [ -z "$(shell find $(SRCDIR) -type f -name "*.h" -newer $(NAME) 2>/dev/null)" ]; then \
@@ -216,8 +220,18 @@ check:
 		make -s compile; \
 	fi
 
+check_bonus:
+	@if [ -f "$(NAME_BONUS)" ] && [ -z "$(shell find $(SRCDIR_BONUS) -type f -name "*.c" -newer $(NAME_BONUS) 2>/dev/null)" ] && [ -z "$(shell find $(SRCDIR_BONUS) -type f -name "*.h" -newer $(NAME_BONUS) 2>/dev/null)" ]; then \
+		echo "$(YELLOW)********* Rien à faire - Tout est à jour *********$(NC)"; \
+	else \
+		make -s compile_bonus; \
+	fi
+
 pre_comp:
 	@echo "$(YELLOW)********* Début de la compilation du programme $(NAME) *********$(NC)"
+
+pre_comp_bonus:
+	@echo "$(YELLOW)********* Début de la compilation du programme $(NAME_BONUS) *********$(NC)"
 
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) $(OPTIONS) $(LFLAGS) -o $@
@@ -235,6 +249,23 @@ $(OBJDIR_MANDATORY)/%.o: $(SRCDIR)/%.c
 		$<
 	$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
 
+$(NAME_BONUS): $(OBJ_BONUS)
+	@$(CC) $(CFLAGS) $(OBJ_BONUS) $(OPTIONS_BONUS) $(LFLAGS) -o $@
+	@echo -e "\r$(GREEN)********* Compilation terminée avec succès! *********$(NC)$(KL)"
+	@echo "$(GREEN)********* L'executable $(NAME_BONUS) a été créée. *********$(NC)"
+
+$(OBJDIR_BONUS)/%.o: $(SRCDIR_BONUS)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(OPTIONS_BONUS) -c $< -o $@
+	@printf "$(NC)\rCompiling files: [%-50s] %3d%% (%d/%d) %s$(KL)" \
+		"$(shell printf '=%.0s' $$(seq 1 $$(($(COUNT) * 50 / $(TOTAL_FILES_BONUS)))))" \
+		$$(($(COUNT) * 100 / $(TOTAL_FILES_BONUS))) \
+		$(COUNT) \
+		$(TOTAL_FILES_BONUS) \
+		$<
+	$(eval COUNT=$(shell echo $$(($(COUNT)+1))))
+
+
 $(LIBFT):
 	@make -sC $(LIBFT_DIR)
 
@@ -249,6 +280,17 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
+	@make -sC $(LIBFT_DIR) fclean
+	@echo "$(RED)********* Suppression de l'executable $(NAME) *********$(NC)"
+
+clean_bonus:
+	@rm -rf $(OBJDIR_BONUS)
+	@make -sC $(LIBFT_DIR) clean
+	@make -sC $(MLX_DIR) clean
+	@echo "$(YELLOW)********* Suppression des fichiers objets *********$(NC)"
+
+fclean_bonus: clean_bonus
+	@rm -f $(NAME_BONUS)
 	@make -sC $(LIBFT_DIR) fclean
 	@echo "$(RED)********* Suppression de l'executable $(NAME) *********$(NC)"
 
