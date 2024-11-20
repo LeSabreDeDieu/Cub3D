@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 19:36:35 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/19 14:00:35 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # include <stdbool.h>
 # include <stdio.h>
 // -------------------------- define section -------------------------- //
-# define WIDTH 1920
+# define WIDTH 1080
 # define HEIGHT 1080
 
 # define PI 3.14159265359
@@ -35,7 +35,7 @@
 # define MOVE_SPEED 1
 # define ROT_SPEED 0.02
 # define FPS 60
-# define FRAME_TIME 1
+# define FRAME_TIME 16.67
 // -------------------------- enum section -------------------------- //
 // enum for the wall type
 enum				e_wall
@@ -140,6 +140,7 @@ void				render_wall(t_cub3d *cub3d, int ray);
 int					wall_hit(t_cub3d *cub3d, float x, float y);
 int					inter_check(float angle, float *inter, float *step,
 						int is_horizon);
+int					check_collision(t_cub3d *cub3d, float new_x, float new_y);
 
 // ANGLE
 int					unit_circle(float angle, char c);

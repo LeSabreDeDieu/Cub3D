@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:20:41 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 19:40:28 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/19 09:40:38 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ int	on_keypress(int keycode, t_cub3d *cub3d)
 {
 	if (keycode == XK_Escape)
 		on_destroy(cub3d);
-	if (keycode == XK_w)
+	if (keycode == XK_w || keycode == XK_Up)
 		cub3d->key.w = true;
+	if (keycode == XK_s || keycode == XK_Down)
+		cub3d->key.s = true;
 	if (keycode == XK_a)
 		cub3d->key.a = true;
-	if (keycode == XK_s)
-		cub3d->key.s = true;
 	if (keycode == XK_d)
 		cub3d->key.d = true;
 	if (keycode == XK_Left)
@@ -37,12 +37,12 @@ int	on_keypress(int keycode, t_cub3d *cub3d)
 
 int	on_keyrelease(int keycode, t_cub3d *cub3d)
 {
-	if (keycode == XK_w)
+	if (keycode == XK_w || keycode == XK_Up)
 		cub3d->key.w = false;
+	if (keycode == XK_s || keycode == XK_Down)
+		cub3d->key.s = false;
 	if (keycode == XK_a)
 		cub3d->key.a = false;
-	if (keycode == XK_s)
-		cub3d->key.s = false;
 	if (keycode == XK_d)
 		cub3d->key.d = false;
 	if (keycode == XK_Left)
