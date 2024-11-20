@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 13:14:26 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 13:25:52 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # include <stdbool.h>
 # include <stdio.h>
 // -------------------------- define section -------------------------- //
-# define WIDTH 2460
-# define HEIGHT 1400
+# define WIDTH 1080
+# define HEIGHT 1080
 
 # define PI 3.14159265359
 
