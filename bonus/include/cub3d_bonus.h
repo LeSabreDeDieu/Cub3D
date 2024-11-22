@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 08:37:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/22 08:38:09 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/22 11:32:20 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@
 # define ROT_SPEED 0.04
 # define FPS 60
 # define FRAME_TIME 16.67
+
+# define MINIMAP_SIZE 144
+# define MINIMAP_OFFSET 10
 // -------------------------- enum section -------------------------- //
 // enum for the wall type
 enum				e_wall
@@ -135,6 +138,7 @@ size_t				ft_strlen_not_whitespace(const char *s);
 void				check_chars(t_cub3d *data, char *map_orig, char *map_copy);
 void				get_player_pos(t_cub3d *data);
 void				raycast(t_cub3d *cub3d);
+void				draw_minimap(t_cub3d *cub3d);
 
 // RGB
 int					create_rgb(int r, int g, int b);

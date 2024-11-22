@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:37:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 08:47:57 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/22 11:01:45 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	update(t_cub3d *cub3d)
 		create_img(cub3d, &cub3d->img);
 		key_update(cub3d);
 		raycast(cub3d);
+		draw_minimap(cub3d);
 		mlx_put_image_to_window(cub3d->mlx_ptr, cub3d->win_ptr,
 			cub3d->img.img, 0, 0);
 		cub3d->nb_frame = 0;
