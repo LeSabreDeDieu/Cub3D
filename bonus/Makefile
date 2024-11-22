@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 08:10:46 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/22 11:02:49 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/22 12:20:33 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ SRC_INIT				=	$(addprefix $(SRC_INIT_DIR)/, $(SRC_INIT_LIST))
 
 # MINIMAP
 SRC_MINIMAP_DIR			=	minimap
-SRC_MINIMAP_LIST		=	minimap.c
+SRC_MINIMAP_LIST		=	minimap.c					\
+							player.c
 SRC_MINIMAP				=	$(addprefix $(SRC_MINIMAP_DIR)/, $(SRC_MINIMAP_LIST))
 
 # PARSING

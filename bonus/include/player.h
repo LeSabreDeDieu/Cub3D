@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:18:34 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 15:59:01 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/22 15:17:46 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int						check_collision(t_cub3d *cub3d, float x, float y);
 // CAMERA ROT
 void					camera_rot_left(t_cub3d *cub3d);
 void					camera_rot_right(t_cub3d *cub3d);
+void					mouse_rot(t_cub3d *cub3d);
 
 // ---------------------------- end of file ---------------------------- //
 #endif

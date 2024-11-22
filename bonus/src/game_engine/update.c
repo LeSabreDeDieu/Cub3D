@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:37:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/22 11:01:45 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/22 15:18:22 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	update(t_cub3d *cub3d)
 			cub3d->img.img, 0, 0);
 		cub3d->nb_frame = 0;
 	}
+	if (!cub3d->key.altl)
+		mouse_rot(cub3d);
 	cub3d->nb_frame++;
 	return (EXIT_SUCCESS);
 }

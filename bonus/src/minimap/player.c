@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   windows.c                                          :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:38:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/22 15:19:13 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/22 12:04:44 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/11/22 14:03:06 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
 
-int	windows_init(t_cub3d *data)
+void	draw_player(t_cub3d *cub3d)
 {
-	data->mlx_ptr = mlx_init();
-	if (!data->mlx_ptr)
-		return (FAILURE);
-	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "Cub3D Bonus");
-	if (!data->win_ptr)
-		return (free(data->mlx_ptr), FAILURE);
-	return (SUCCESS);
+	int	x;
+	int	y;
+	int	px;
+	int	py;
+
+	y = -4;
+	while (y < 4)
+	{
+		x = -4;
+		while (x < 4)
+		{
+			px = (int)((MINIMAP_SIZE / 2) + x);
+			py = (int)((MINIMAP_SIZE / 2) + y);
+			if ((x * x + y * y) <= 4 * 4)
+				my_mlx_pixel_put(&cub3d->img, px + MINIMAP_OFFSET, py
+					+ MINIMAP_OFFSET, 0x00FF0000);
+			x++;
+		}
+		y++;
+	}
 }

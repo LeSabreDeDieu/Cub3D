@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 09:09:55 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/22 11:31:54 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/22 14:31:54 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,42 @@ void	calculate_map_coords(t_cub3d *cub3d, float *start_x, float *start_y)
 {
 	float	half_map_size;
 
-	half_map_size = 72.0f;
+	half_map_size = MINIMAP_SIZE / 2;
 	*start_x = (cub3d->player.pos.x - half_map_size) / TILE_SIZE;
 	*start_y = (cub3d->player.pos.y - half_map_size) / TILE_SIZE;
 }
 
 void	draw_wall_floor(t_cub3d *cub3d, t_pos map_pos, t_pos pos)
 {
-	if (map_pos.x >= 0 && map_pos.x < cub3d->map.width
-		&& map_pos.y >= 0 && map_pos.y < cub3d->map.height)
+	int	i;
+	int	*colors;
+
+	i = 0;
+	while (cub3d->texture[i])
+	{
+		if (!ft_strncmp(cub3d->texture[i]->id, "F", 1))
+		{
+			colors = cub3d->texture[i]->color;
+			break ;
+		}
+		i++;
+	}
+	if (map_pos.x >= 0 && map_pos.x < cub3d->map.width && map_pos.y >= 0
+		&& map_pos.y < cub3d->map.height)
 	{
 		if (cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == '1')
-			my_mlx_pixel_put(&cub3d->img, pos.x + MINIMAP_OFFSET,
-				pos.y + MINIMAP_OFFSET, 0x00FFFFFF);
+			my_mlx_pixel_put(&cub3d->img, pos.x + MINIMAP_OFFSET, pos.y
+				+ MINIMAP_OFFSET, 0x00FFFFFF);
+		else if (cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == '0'
+			|| ((cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == 'N'
+					|| cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == 'S'
+					|| cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == 'E'
+					|| cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == 'W')))
+			my_mlx_pixel_put(&cub3d->img, pos.x + MINIMAP_OFFSET, pos.y
+				+ MINIMAP_OFFSET, create_rgb(colors[0], colors[1], colors[2]));
 		else
-			my_mlx_pixel_put(&cub3d->img, pos.x + MINIMAP_OFFSET,
-				pos.y + MINIMAP_OFFSET, 0x00000000);
+			my_mlx_pixel_put(&cub3d->img, pos.x + MINIMAP_OFFSET, pos.y
+				+ MINIMAP_OFFSET, create_rgb(124, 63, 0));
 	}
 }
 
@@ -42,12 +62,12 @@ void	draw_map(t_cub3d *cub3d, float start_x, float start_y)
 	t_pos	pos_d;
 	t_pos	map_pos;
 
-	radius = 72.0f;
+	radius = MINIMAP_SIZE / 2;
 	pos.y = 0;
-	while (pos.y < 144)
+	while (pos.y < MINIMAP_SIZE)
 	{
 		pos.x = 0;
-		while (pos.x < 144)
+		while (pos.x < MINIMAP_SIZE)
 		{
 			pos_d.x = pos.x - radius;
 			pos_d.y = pos.y - radius;
@@ -63,34 +83,37 @@ void	draw_map(t_cub3d *cub3d, float start_x, float start_y)
 	}
 }
 
-void	draw_player(t_cub3d *cub3d)
+void	draw_background_circle(t_cub3d *cub3d, int color)
 {
-	int	x;
-	int y;
-	int	px;
-	int	py;
+	float	radius;
+	t_pos	pos;
+	t_pos	pos_d;
 
-	y = -4;
-	while (y < 4)
+	radius = (MINIMAP_SIZE + MINIMAP_OFFSET) / 2;
+	pos.y = 0;
+	while (pos.y < MINIMAP_SIZE + MINIMAP_OFFSET)
 	{
-		x = -4;
-		while (x < 4)
+		pos.x = 0;
+		while (pos.x < MINIMAP_SIZE + MINIMAP_OFFSET)
 		{
-			px = (int)(72.0f + x);
-			py = (int)(72.0f + y);
-			if ((x * x + y * y) <= 4 * 4)
-				my_mlx_pixel_put(&cub3d->img, px + MINIMAP_OFFSET, py
-					+ MINIMAP_OFFSET, 0x00FF0000);
-			x++;
+			pos_d.x = pos.x - radius;
+			pos_d.y = pos.y - radius;
+			if (pos_d.x * pos_d.x + pos_d.y * pos_d.y <= radius * radius)
+				my_mlx_pixel_put(&cub3d->img, pos.x + (MINIMAP_OFFSET / 2),
+					pos.y + (MINIMAP_OFFSET / 2), color);
+			pos.x++;
 		}
-		y++;
+		pos.y++;
 	}
 }
 
 void	draw_minimap(t_cub3d *cub3d)
 {
-	float start_x, start_y;
+	float	start_x;
+	float	start_y;
+
 	calculate_map_coords(cub3d, &start_x, &start_y);
+	draw_background_circle(cub3d, create_rgb(204, 170, 135));
 	draw_map(cub3d, start_x, start_y);
 	draw_player(cub3d);
 }

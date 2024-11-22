@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:09:47 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 17:26:03 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/22 15:12:53 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void	init_project(t_cub3d *cub3d, char *argv[])
 	windows_init(cub3d);
 	load_texture(cub3d);
 	create_img(cub3d, &cub3d->img);
+	mlx_mouse_hide(cub3d->mlx_ptr, cub3d->win_ptr);
 }
