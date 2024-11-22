@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:23:14 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 10:25:19 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/22 08:35:37 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ int	get_texture_color(t_img *texture, float x_offset, float y_offset)
 	int	x;
 	int	y;
 
-	x = fmodf(x_offset, TILE_SIZE) * (texture->width / TILE_SIZE);
-	y = fmodf(y_offset, TILE_SIZE) * (texture->height / TILE_SIZE);
+	x = fabsf(fmodf(x_offset, TILE_SIZE) * (texture->width / TILE_SIZE));
+	y = fabsf(fmodf(y_offset, TILE_SIZE) * (texture->height / TILE_SIZE));
 	color = texture->addr[y * texture->line_length + x * texture->bits_per_pixel
 		/ 8];
 	color += texture->addr[y * texture->line_length + x

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:20:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 17:15:47 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/22 08:36:33 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	draw_floor(t_cub3d *cub3d, int ray, int b_pix)
 {
 	int	i;
-	int *colors;
+	int	*colors;
 
 	i = 0;
 	while (cub3d->texture[i])
@@ -36,7 +36,7 @@ static void	draw_floor(t_cub3d *cub3d, int ray, int b_pix)
 static void	draw_ceiling(t_cub3d *cub3d, int ray, int t_pix)
 {
 	int	i;
-	int *colors;
+	int	*colors;
 
 	i = 0;
 	while (cub3d->texture[i])

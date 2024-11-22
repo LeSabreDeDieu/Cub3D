@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:23:40 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 13:21:48 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/22 08:30:02 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ void	move_player(t_cub3d *cub3d)
 
 	new_x = cub3d->player.pos.x + cub3d->player.move.x;
 	new_y = cub3d->player.pos.y + cub3d->player.move.y;
-	if (!check_collision(cub3d, new_x, cub3d->player.pos.y))
-		cub3d->player.pos.x = new_x;
-	if (!check_collision(cub3d, cub3d->player.pos.x, new_y))
-		cub3d->player.pos.y = new_y;
+	cub3d->player.pos.x = new_x;
+	cub3d->player.pos.y = new_y;
 }
 
 void	player_move_forward(t_cub3d *cub3d)
