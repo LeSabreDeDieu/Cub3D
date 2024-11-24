@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 17:04:33 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/24 07:27:08 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@
 */
 # define FOV 60
 # define TILE_SIZE 32
-# define MOVE_SPEED 2
-# define ROT_SPEED 0.04
+# define MOVE_SPEED 1
+# define ROT_SPEED 0.01
 # define FPS 60
 # define FRAME_TIME 16.67
 // -------------------------- enum section -------------------------- //

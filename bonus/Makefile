@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 08:10:46 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/22 12:20:33 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/24 08:36:09 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ SRC_RAYCASTING_LIST		=	angle.c						\
 							checkers.c					\
 							draw_line.c					\
 							getters.c					\
+							getters_2.c					\
 							render.c
 SRC_RAYCASTING			=	$(addprefix $(SRC_RAYCASTING_DIR)/, $(SRC_RAYCASTING_LIST))
 

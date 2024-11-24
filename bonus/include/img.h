@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:49:56 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/20 08:34:38 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/24 08:34:04 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void					my_mlx_pixel_put(t_img *img, int x, int y, int color);
 // get the color of a pixel in the image
 int						get_texture_color(t_img *texture, float x_offset,
 							float y_offset);
+
+// get the color of the floor and the ceiling
+int						get_color_floor_ceilling(t_cub3d *cub3d, int fc);
 
 // set the image
 t_img					*set_image(t_cub3d *cub3d, char *path);
