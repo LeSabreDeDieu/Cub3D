@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:39:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 14:43:10 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/29 16:00:09 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ enum e_error
 
 // -------------------------- error functions -------------------------- //
 // ERROR
-void				exit_on_error(t_cub3d *cub3d, char *error, int fd);
+void				exit_on_error(t_cub3d *cub3d, char *error);
 void				usage(void);
 
 // ---------------------------- end of file ---------------------------- //
