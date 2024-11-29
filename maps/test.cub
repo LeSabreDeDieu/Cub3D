@@ -1,0 +1,19 @@
+NO	./ressources/walls/north.xpm
+SO	./ressources/walls/south.xpm
+WE	./ressources/walls/west.xpm
+EA	./ressources/walls/east.xpm
+
+F	148,112,255
+C	135,206,235
+
+ 111111111
+10000000001
+10000000001
+10000100001
+10000010001
+10000N00001
+10000000001
+10000000001
+10000000001
+10000000001
+ 111111111
