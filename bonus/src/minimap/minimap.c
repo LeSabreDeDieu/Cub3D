@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 08:23:25 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/24 09:27:58 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/29 12:09:30 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	calculate_map_coords(t_cub3d *cub3d, float *start_x, float *start_y)
 	float	half_map_size;
 
 	half_map_size = MINIMAP_SIZE / 2;
-	*start_x = (roundf(cub3d->player.pos.x) / TILE_SIZE) - half_map_size / TILE_SIZE;
-	*start_y = (roundf(cub3d->player.pos.y) / TILE_SIZE) - half_map_size / TILE_SIZE;
+	*start_x = (cub3d->player.pos.x - half_map_size) / TILE_SIZE;
+	*start_y = (cub3d->player.pos.y - half_map_size) / TILE_SIZE;
 }
 
 void	draw_wall_floor(t_cub3d *cub3d, t_pos map_pos, t_pos pos)
@@ -26,23 +26,22 @@ void	draw_wall_floor(t_cub3d *cub3d, t_pos map_pos, t_pos pos)
 	int	offset_x;
 
 	offset_x = WIDTH - MINIMAP_SIZE - MINIMAP_OFFSET;
-	
 	if (map_pos.x >= 0 && map_pos.x < cub3d->map.width && map_pos.y >= 0
 		&& map_pos.y < cub3d->map.height)
 	{
 		if (cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == '1')
-			my_mlx_pixel_put(&cub3d->img, offset_x + pos.x, 
-				pos.y + MINIMAP_OFFSET / 2, 0x00FFFFFF);
+			my_mlx_pixel_put(&cub3d->img, offset_x + pos.x, pos.y
+				+ MINIMAP_OFFSET / 2 + 10, 0x00FFFFFF);
 		else if (cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == '0'
-					|| ((cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == 'N'
+			|| ((cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == 'N'
 					|| cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == 'S'
 					|| cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == 'E'
 					|| cub3d->map.map[(int)map_pos.y][(int)map_pos.x] == 'W')))
-			my_mlx_pixel_put(&cub3d->img, offset_x + pos.x, 
-				pos.y + MINIMAP_OFFSET / 2, get_color_floor_ceilling(cub3d, 0));
+			my_mlx_pixel_put(&cub3d->img, offset_x + pos.x, pos.y
+				+ MINIMAP_OFFSET / 2 + 10, get_color_floor_ceilling(cub3d, 0));
 		else
-			my_mlx_pixel_put(&cub3d->img, offset_x + pos.x, 
-				pos.y + MINIMAP_OFFSET / 2, create_rgb(124, 63, 0));
+			my_mlx_pixel_put(&cub3d->img, offset_x + pos.x, pos.y
+				+ MINIMAP_OFFSET / 2 + 10, create_rgb(124, 63, 0));
 	}
 }
 
@@ -90,8 +89,8 @@ void	draw_background_circle(t_cub3d *cub3d, int color)
 			pos_d.x = pos.x - radius;
 			pos_d.y = pos.y - radius;
 			if (pos_d.x * pos_d.x + pos_d.y * pos_d.y <= radius * radius)
-				my_mlx_pixel_put(&cub3d->img, WIDTH - (pos.x + (MINIMAP_OFFSET / 2)),
-					pos.y, color);
+				my_mlx_pixel_put(&cub3d->img, WIDTH - (pos.x + (MINIMAP_OFFSET
+							/ 2)), pos.y + 10, color);
 			pos.x++;
 		}
 		pos.y++;

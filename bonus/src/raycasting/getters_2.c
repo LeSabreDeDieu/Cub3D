@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 08:32:43 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/24 08:33:44 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/29 10:24:57 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	get_color_floor_ceilling(t_cub3d *cub3d, int fc)
 	int	*colors;
 
 	i = 0;
+	colors = NULL;
 	while (cub3d->texture[i])
 	{
 		if (!ft_strncmp(cub3d->texture[i]->id, "F", 1) && fc == 0)

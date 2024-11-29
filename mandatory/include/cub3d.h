@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/24 07:27:08 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/28 09:47:04 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void				skip_spaces(char **str);
 
 // UTILS
 size_t				ft_strlen_not_whitespace(const char *s);
-void				check_chars(t_cub3d *data, char *map_orig, char *map_copy);
+void				check_chars(t_cub3d *data, char *map_copy, char *map_orig);
 void				get_player_pos(t_cub3d *data);
 void				raycast(t_cub3d *cub3d);
 

@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 08:10:46 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/24 08:36:09 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/11/29 13:09:18 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,11 @@ SRCDIR					=	./src
 INCDIR					=	./include
 
 # Sources
+# ANIMATION
+SRC_ANIMATION_DIR		=	animation
+SRC_ANIMATION_LIST		=	heart_animation.c
+SRC_ANIMATION			=	$(addprefix $(SRC_ANIMATION_DIR)/, $(SRC_ANIMATION_LIST))
+
 #GAME_ENGINE
 SRC_GAME_ENGINE_DIR		=	game_engine
 SRC_GAME_ENGINE_LIST	=	free_engine.c				\
@@ -74,6 +79,7 @@ SRC_RAYCASTING_LIST		=	angle.c						\
 							draw_line.c					\
 							getters.c					\
 							getters_2.c					\
+							hud.c						\
 							render.c
 SRC_RAYCASTING			=	$(addprefix $(SRC_RAYCASTING_DIR)/, $(SRC_RAYCASTING_LIST))
 
@@ -84,7 +90,8 @@ SRC_UTILS_LIST			=	create_color.c				\
 							free_exit.c
 SRC_UTILS				=	$(addprefix $(SRC_UTILS_DIR)/, $(SRC_UTILS_LIST))
 
-SRC_LIST				=	$(SRC_GAME_ENGINE)		\
+SRC_LIST				=	$(SRC_ANIMATION)		\
+							$(SRC_GAME_ENGINE)		\
 							$(SRC_IMAGE)			\
 							$(SRC_INIT)				\
 							$(SRC_MINIMAP)			\

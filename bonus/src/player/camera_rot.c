@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 08:26:27 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/22 15:17:15 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/29 11:35:51 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ void	mouse_rot(t_cub3d *cub3d)
 	int			x;
 	int			y;
 	int			center_x;
+	int			center_y;
 
 	mlx_mouse_get_pos(cub3d->mlx_ptr, cub3d->win_ptr, &x, &y);
 	center_x = WIDTH / 2;
-	mlx_mouse_move(cub3d->mlx_ptr, cub3d->win_ptr, center_x, y);
+	center_y = HEIGHT / 2;
+	mlx_mouse_move(cub3d->mlx_ptr, cub3d->win_ptr, center_x, center_y);
 	if (prev_x == 0)
 		prev_x = x;
 	if (x > center_x)

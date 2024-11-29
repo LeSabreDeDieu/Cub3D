@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 08:37:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/24 09:08:41 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/29 15:07:09 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // -------------------------- include section -------------------------- //
 # include "cub_error.h"
-# include "game_engine.h"
+# include "game_engine_bonus.h"
 # include "img.h"
 # include "libft.h"
 # include "mlx.h"
@@ -26,15 +26,16 @@
 # include <stdio.h>
 // -------------------------- define section -------------------------- //
 # define WIDTH 1080
-# define HEIGHT 1080
+# define HEIGHT 720
 
 # define PI 3.14159265359
 
 # define FOV 60
 # define TILE_SIZE 32
-# define MOVE_SPEED 4
+# define MOVE_SPEED 2
 # define ROT_SPEED 0.05
 # define FPS 60
+# define FRAME_TIME 16.67
 
 # define MINIMAP_SIZE 144
 # define MINIMAP_OFFSET 10
@@ -103,19 +104,30 @@ typedef struct s_map
 	int				height;
 }					t_map;
 
+typedef struct s_hud
+{
+	t_img			*hotbar;
+	t_img			*heart;
+	t_img			heart_animation;
+	int				heart_index;
+}					t_hud;
+
 // struct for the cub3d
 typedef struct s_cub3d
 {
 	void			*mlx_ptr;
 	void			*win_ptr;
 	t_texture_map	*texture[6];
-	t_map			map;
 	t_img			img;
+	t_hud			hud;
+	t_map			map;
 	t_player		player;
 	t_key			key;
 	t_ray			ray;
 	double			fps;
 	long			last_frame_time;
+	int				nb_frame;
+	bool			animation;
 }					t_cub3d;
 // -------------------------- function section -------------------------- //
 // INIT
@@ -140,14 +152,16 @@ void				calculate_map_coords(t_cub3d *cub3d, float *start_x,
 						float *start_y);
 void				*draw_minimap(void *cub3d);
 void				draw_player(t_cub3d *cub3d);
-void				draw_pov(t_cub3d *cub3d, float *start_x,
-						float *start_y);
+void				draw_pov(t_cub3d *cub3d, float *start_x, float *start_y);
 
 // RGB
 int					create_rgb(int r, int g, int b);
 
 // DRAW
 void				render_wall(t_cub3d *cub3d, int ray);
+void				draw_hotbar(t_cub3d *cub3d);
+void				draw_hearts(t_cub3d *cub3d);
+int					animation_hearts(t_cub3d *cub3d);
 
 // CHECKERS
 int					wall_hit(t_cub3d *cub3d, float x, float y);

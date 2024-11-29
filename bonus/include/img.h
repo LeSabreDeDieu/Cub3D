@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:49:56 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/24 08:34:04 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/29 13:30:08 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ typedef struct s_img
 
 // -------------------------- image functions -------------------------- //
 // create a new image
-void					create_img(t_cub3d *cub3d, t_img *img);
+void					create_img(t_cub3d *cub3d, t_img *img, int width,
+							int height);
 
 // put a pixel in the image
 void					my_mlx_pixel_put(t_img *img, int x, int y, int color);

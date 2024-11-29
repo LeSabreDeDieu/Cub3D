@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:54:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 17:26:03 by aditer           ###   ########.fr       */
+/*   Updated: 2024/11/29 10:27:51 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	get_check_valid_map(t_cub3d *cube3d, int fd)
 	map_tmp = get_map(fd);
 	map_tmp_copy = map_tmp;
 	skip_spaces(&map_tmp_copy);
-	check_chars(cube3d, map_tmp_copy, map_tmp);
+	check_chars(cube3d, map_tmp, map_tmp_copy);
 	check_empty_line(cube3d, map_tmp_copy, map_tmp);
 	cube3d->map.map = ft_split(map_tmp_copy, '\n');
 	free(map_tmp);

@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:46:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/22 08:36:11 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/28 09:46:46 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	is_in_list(t_cub3d *data, char c, char *chars, char *map_orig)
 	}
 }
 
-void	check_chars(t_cub3d *data, char *map_orig, char *map_copy)
+void	check_chars(t_cub3d *data, char *map_copy, char *map_orig)
 {
 	int		i;
 	char	*chars;
