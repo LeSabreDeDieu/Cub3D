@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 08:37:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/29 15:07:09 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/30 12:21:06 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ int					windows_init(t_cub3d *cub3d);
 void				init_project(t_cub3d *cub3d, char *argv[]);
 
 // PARSING
-void				check_texture(t_cub3d *cub3d);
+void				check_texture(t_cub3d *cub3d, int fd);
 void				get_all_texture(t_cub3d *cub3d, int fd);
 void				get_check_valid_map(t_cub3d *cube3d, int fd);
 int					set_color(t_texture_map *texture, char **split, int j);

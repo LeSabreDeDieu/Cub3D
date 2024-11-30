@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:20:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/22 08:36:33 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/30 12:14:40 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	draw_floor(t_cub3d *cub3d, int ray, int b_pix)
 	i = 0;
 	while (cub3d->texture[i])
 	{
-		if (!ft_strncmp(cub3d->texture[i]->id, "F", 1))
+		if (!ft_strcmp(cub3d->texture[i]->id, "F"))
 		{
 			colors = cub3d->texture[i]->color;
 			break ;
@@ -41,7 +41,7 @@ static void	draw_ceiling(t_cub3d *cub3d, int ray, int t_pix)
 	i = 0;
 	while (cub3d->texture[i])
 	{
-		if (!ft_strncmp(cub3d->texture[i]->id, "C", 1))
+		if (!ft_strcmp(cub3d->texture[i]->id, "C"))
 		{
 			colors = cub3d->texture[i]->color;
 			break ;

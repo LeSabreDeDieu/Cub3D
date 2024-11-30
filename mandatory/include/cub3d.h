@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: willrol <willrol@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/30 10:28:01 by willrol          ###   ########.fr       */
+/*   Updated: 2024/11/30 12:18:34 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ int					windows_init(t_cub3d *cub3d);
 void				init_project(t_cub3d *cub3d, char *argv[]);
 
 // PARSING
-void				check_texture(t_cub3d *cub3d);
+void				check_texture(t_cub3d *cub3d, int fd);
 void				get_all_texture(t_cub3d *cub3d, int fd);
 void				get_check_valid_map(t_cub3d *cube3d, int fd);
 int					set_color(t_texture_map *texture, char **split, int j);

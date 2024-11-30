@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:09:47 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/29 13:39:44 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/30 12:21:15 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ void	init_project(t_cub3d *cub3d, char *argv[])
 
 	ft_bzero(cub3d, sizeof(t_cub3d));
 	str = argv[1] + (ft_strlen(argv[1]) - 4);
-	if (str && ft_strncmp(str, ".cub", 4) != 0)
+	if (str && ft_strcmp(str, ".cub") != 0)
 		exit_on_error(cub3d, ERROR_NOTCUB);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		exit_on_error(cub3d, ERROR_OPENFILE);
 	get_all_texture(cub3d, fd);
-	check_texture(cub3d);
+	check_texture(cub3d, fd);
 	get_check_valid_map(cub3d, fd);
 	close(fd);
 	windows_init(cub3d);

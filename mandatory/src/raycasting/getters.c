@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:23:14 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/22 08:35:37 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/30 12:14:22 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static t_img	*find_texture_by_id(t_cub3d *cub3d, char *direction)
 	i = 0;
 	while (cub3d->texture[i])
 	{
-		if (!ft_strncmp(cub3d->texture[i]->id, direction, 2))
+		if (!ft_strcmp(cub3d->texture[i]->id, direction))
 			return (cub3d->texture[i]->img);
 		i++;
 	}
