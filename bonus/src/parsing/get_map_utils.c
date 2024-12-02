@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   get_map_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 08:15:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:28:35 by sgabsi           ###   ########.fr       */
+/*   Created: 2024/11/04 13:54:19 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/12/02 08:32:31 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
-#include "game_engine.h"
+#include "cub3d_bonus.h"
 
-int	main(int argc, char *argv[])
+void	skip_spaces(char **str)
 {
-	t_cub3d	cub3d;
-
-	if (argc != 2)
-		usage();
-	init_project(&cub3d, argv);
-	//print(cub3d);
-	game_engine(&cub3d);
-	return (EXIT_SUCCESS);
+	if (!str || !*str)
+		return ;
+	while (**str == '\n')
+		(*str)++;
 }

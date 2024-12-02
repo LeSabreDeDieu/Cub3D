@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:49:56 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/18 11:27:02 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 09:37:43 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 // -------------------------- define section -------------------------- //
 typedef struct s_cub3d	t_cub3d;
+
+# define HOTBAR_PATH "./ressources/hud/Hotbar.xpm"
+# define HEART_PATH "./ressources/hud/heart.xpm"
 
 // ---------------------------- image struct ---------------------------- //
 typedef struct s_img
@@ -31,7 +34,8 @@ typedef struct s_img
 
 // -------------------------- image functions -------------------------- //
 // create a new image
-void					create_img(t_cub3d *cub3d, t_img *img);
+void					create_img(t_cub3d *cub3d, t_img *img, int width,
+							int height);
 
 // put a pixel in the image
 void					my_mlx_pixel_put(t_img *img, int x, int y, int color);
@@ -40,11 +44,14 @@ void					my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int						get_texture_color(t_img *texture, float x_offset,
 							float y_offset);
 
+// get the color of the floor and the ceiling
+int						get_color_floor_ceilling(t_cub3d *cub3d, int fc);
+
 // set the image
-t_img	*set_image(t_cub3d *cub3d, char *path);
+t_img					*set_image(t_cub3d *cub3d, char *path);
 
 // load the texture
-void	load_texture(t_cub3d *cub3d);
+void					load_texture(t_cub3d *cub3d);
 
 // ---------------------------- end of file ---------------------------- //
 #endif

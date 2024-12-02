@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:18:34 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 13:22:04 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/22 08:39:56 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void					player_move_forward(t_cub3d *cub3d);
 void					player_move_backward(t_cub3d *cub3d);
 void					player_move_left(t_cub3d *cub3d);
 void					player_move_right(t_cub3d *cub3d);
-int						check_collision(t_cub3d *cub3d, float x, float y);
 
 // CAMERA ROT
 void					camera_rot_left(t_cub3d *cub3d);

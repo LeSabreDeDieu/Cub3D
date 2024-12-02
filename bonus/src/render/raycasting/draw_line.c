@@ -6,11 +6,11 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 13:40:27 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/16 13:09:30 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/24 09:16:13 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 void	raycast(t_cub3d *cub3d)
 {

@@ -6,11 +6,11 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:15:17 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:32 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 09:39:04 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 t_img	*set_image(t_cub3d *cub3d, char *path)
 {
@@ -22,7 +22,10 @@ t_img	*set_image(t_cub3d *cub3d, char *path)
 	img->img = mlx_xpm_file_to_image(cub3d->mlx_ptr, path,
 			&img->width, &img->height);
 	if (!img->img)
+	{
+		free(img);
 		exit_on_error(cub3d, ERROR_TEXTURE);
+	}
 	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel,
 			&img->line_length, &img->endian);
 	return (img);
@@ -42,4 +45,10 @@ void	load_texture(t_cub3d *cub3d)
 			cub3d->texture[i]->img = NULL;
 		i++;
 	}
+	cub3d->hud.hotbar = set_image(cub3d, HOTBAR_PATH);
+	if (!cub3d->hud.hotbar)
+		exit_on_error(cub3d, ERROR_TEXTURE);
+	cub3d->hud.heart = set_image(cub3d, HEART_PATH);
+	if (!cub3d->hud.heart)
+		exit_on_error(cub3d, ERROR_TEXTURE);
 }

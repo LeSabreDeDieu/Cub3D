@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:23:14 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 10:25:19 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/30 12:14:22 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ int	get_texture_color(t_img *texture, float x_offset, float y_offset)
 	int	x;
 	int	y;
 
-	x = fmodf(x_offset, TILE_SIZE) * (texture->width / TILE_SIZE);
-	y = fmodf(y_offset, TILE_SIZE) * (texture->height / TILE_SIZE);
+	x = fabsf(fmodf(x_offset, TILE_SIZE) * (texture->width / TILE_SIZE));
+	y = fabsf(fmodf(y_offset, TILE_SIZE) * (texture->height / TILE_SIZE));
 	color = texture->addr[y * texture->line_length + x * texture->bits_per_pixel
 		/ 8];
 	color += texture->addr[y * texture->line_length + x
@@ -90,7 +90,7 @@ static t_img	*find_texture_by_id(t_cub3d *cub3d, char *direction)
 	i = 0;
 	while (cub3d->texture[i])
 	{
-		if (!ft_strncmp(cub3d->texture[i]->id, direction, 2))
+		if (!ft_strcmp(cub3d->texture[i]->id, direction))
 			return (cub3d->texture[i]->img);
 		i++;
 	}

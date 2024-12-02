@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   checkers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:24:26 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/14 19:24:56 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/20 17:26:03 by aditer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	wall_hit(t_cub3d *cub3d, float x, float y)
 {

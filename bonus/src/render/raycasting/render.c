@@ -6,34 +6,52 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 19:20:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 12:15:55 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/11/30 12:12:10 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 static void	draw_floor(t_cub3d *cub3d, int ray, int b_pix)
 {
 	int	i;
+	int	*colors;
 
+	i = 0;
+	while (cub3d->texture[i])
+	{
+		if (!ft_strcmp(cub3d->texture[i]->id, "F"))
+		{
+			colors = cub3d->texture[i]->color;
+			break ;
+		}
+		i++;
+	}
 	i = b_pix;
 	while (i < HEIGHT)
 		my_mlx_pixel_put(&cub3d->img, ray, i++,
-			create_rgb(cub3d->texture[FLOOR]->color[0],
-				cub3d->texture[FLOOR]->color[1],
-				cub3d->texture[FLOOR]->color[2]));
+			create_rgb(colors[0], colors[1], colors[2]));
 }
 
 static void	draw_ceiling(t_cub3d *cub3d, int ray, int t_pix)
 {
 	int	i;
+	int	*colors;
 
+	i = 0;
+	while (cub3d->texture[i])
+	{
+		if (!ft_strcmp(cub3d->texture[i]->id, "C"))
+		{
+			colors = cub3d->texture[i]->color;
+			break ;
+		}
+		i++;
+	}
 	i = 0;
 	while (i < t_pix)
 		my_mlx_pixel_put(&cub3d->img, ray, i++,
-			create_rgb(cub3d->texture[CEILING]->color[0],
-				cub3d->texture[CEILING]->color[1],
-				cub3d->texture[CEILING]->color[2]));
+			create_rgb(colors[0], colors[1], colors[2]));
 }
 
 static float	get_x_offset(t_cub3d *cub3d, t_img *texture)

@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:49:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:24 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 09:13:42 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,8 @@ t_texture_map	*get_texture(int fd)
 	if (!line)
 		return (NULL);
 	tmp = ft_strtrim(line, " \t\n\v\f\r");
+	if (!tmp)
+		return (NULL);
 	free(line);
 	while (tmp && tmp[0] == '\0')
 	{
@@ -110,6 +112,8 @@ t_texture_map	*get_texture(int fd)
 		if (!line)
 			return (NULL);
 		tmp = ft_strtrim(line, " \t\n\v\f\r");
+		if (!tmp)
+			return (free(line), NULL);
 		free(line);
 	}
 	result = get_elems(tmp);
@@ -119,14 +123,18 @@ t_texture_map	*get_texture(int fd)
 
 void	get_all_texture(t_cub3d *cub3d, int fd)
 {
-	int				i;
+	int	i;
 
 	i = 0;
 	while (i < 6)
 	{
 		cub3d->texture[i] = get_texture(fd);
 		if (!cub3d->texture[i])
+		{
+			clean_gnl(fd);
+			close(fd);
 			exit_on_error(cub3d, ERROR_TEXTURE);
+		}
 		i++;
 	}
 }

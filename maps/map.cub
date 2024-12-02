@@ -1,10 +1,10 @@
-NO	./ressources/walls/north.xpm
-SO	./ressources/walls/south.xpm
-WE	./ressources/walls/west.xpm
-EA	./ressources/walls/east.xpm
+NO	./ressources/walls/warped_planks.xpm
+SO	./ressources/walls/crimson_planks.xpm
+WE	./ressources/walls/birch_planks.xpm
+EA	./ressources/walls/dark_oak_planks.xpm
 
-F	148,112,255
-C	135,206,235
+C	1, 1, 1
+F	128, 128, 128
 
         1111111111111111111111111
         1000000000110000000000001

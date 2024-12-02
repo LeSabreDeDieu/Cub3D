@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   put_pixel.c                                        :+:      :+:    :+:   */
+/*   get_map_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aditer <aditer@student.42.fr>              +#+  +:+       +#+        */
+/*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/16 13:18:52 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/20 17:26:03 by aditer           ###   ########.fr       */
+/*   Created: 2024/11/04 13:54:19 by sgabsi            #+#    #+#             */
+/*   Updated: 2024/12/02 09:10:11 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d_bonus.h"
+#include "cub3d.h"
 
-void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
+void	skip_spaces(char **str)
 {
-	char	*dst;
-
-	dst = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	if (!str || !*str)
+		return ;
+	while (**str == '\n')
+		(*str)++;
 }

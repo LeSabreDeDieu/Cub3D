@@ -6,11 +6,11 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:26:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/18 13:46:12 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 08:46:32 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 int	is_right_name(t_texture_map *texture[6])
 {
@@ -19,12 +19,12 @@ int	is_right_name(t_texture_map *texture[6])
 	i = 0;
 	while (i < 6)
 	{
-		if (ft_strncmp(texture[i]->id, "NO", 2) != 0
-			&& ft_strncmp(texture[i]->id, "SO", 2) != 0
-			&& ft_strncmp(texture[i]->id, "WE", 2) != 0
-			&& ft_strncmp(texture[i]->id, "EA", 2) != 0
-			&& ft_strncmp(texture[i]->id, "F", 1) != 0
-			&& ft_strncmp(texture[i]->id, "C", 1) != 0)
+		if (ft_strcmp(texture[i]->id, "NO") != 0
+			&& ft_strcmp(texture[i]->id, "SO") != 0
+			&& ft_strcmp(texture[i]->id, "WE") != 0
+			&& ft_strcmp(texture[i]->id, "EA") != 0
+			&& ft_strcmp(texture[i]->id, "F") != 0
+			&& ft_strcmp(texture[i]->id, "C") != 0)
 			return (FAILURE);
 		i++;
 	}
@@ -42,7 +42,7 @@ int	is_in_double(t_texture_map *texture[6])
 		j = i + 1;
 		while (j < 6)
 		{
-			if (ft_strncmp(texture[i]->id, texture[j]->id, 2) == 0)
+			if (ft_strcmp(texture[i]->id, texture[j]->id) == 0)
 				return (FAILURE);
 			j++;
 		}
@@ -59,7 +59,7 @@ int	check_color(t_texture_map *texture[6], int i)
 	int		k;
 
 	split = ft_split(texture[i]->path, ',');
-	if (!split || !split[0] || !split[1] || !split[2] || split[3])
+	if (!split || !split[0] || !split[1] || !split[2])
 		return (free_str_tab(split), FAILURE);
 	j = -1;
 	while (++j < 3)
@@ -86,8 +86,8 @@ int	color_is_valid(t_texture_map *texture[6])
 	i = -1;
 	while (++i < 6)
 	{
-		if (ft_strncmp(texture[i]->id, "F", 1) == 0
-			|| ft_strncmp(texture[i]->id, "C", 1) == 0)
+		if (ft_strcmp(texture[i]->id, "F") == 0
+			|| ft_strcmp(texture[i]->id, "C") == 0)
 		{
 			if (check_color(texture, i) == FAILURE)
 				return (FAILURE);
@@ -96,7 +96,7 @@ int	color_is_valid(t_texture_map *texture[6])
 	return (SUCCESS);
 }
 
-void	check_texture(t_cub3d *cub3d)
+void	check_texture(t_cub3d *cub3d, int fd)
 {
 	int	i;
 
@@ -108,9 +108,18 @@ void	check_texture(t_cub3d *cub3d)
 		i++;
 	}
 	if (is_right_name(cub3d->texture) == FAILURE)
+	{
+		(clean_gnl(fd), close(fd));
 		exit_on_error(cub3d, ERROR_WRONG_TEXTURE);
+	}
 	if (is_in_double(cub3d->texture) == FAILURE)
+	{
+		(clean_gnl(fd), close(fd));
 		exit_on_error(cub3d, ERROR_DOUBLE_TEXTURE);
+	}
 	if (color_is_valid(cub3d->texture) == FAILURE)
+	{
+		(clean_gnl(fd), close(fd));
 		exit_on_error(cub3d, ERROR_COLOR);
+	}
 }
