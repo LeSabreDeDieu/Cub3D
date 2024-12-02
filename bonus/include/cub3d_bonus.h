@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 08:37:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/30 12:21:06 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 09:00:39 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ int					create_rgb(int r, int g, int b);
 // DRAW
 void				render_wall(t_cub3d *cub3d, int ray);
 void				draw_hotbar(t_cub3d *cub3d);
+void				draw_heart(t_cub3d *cub3d, t_img *heart, int heart_width);
 void				draw_hearts(t_cub3d *cub3d);
 int					animation_hearts(t_cub3d *cub3d);
 
@@ -184,7 +185,5 @@ int					get_color(t_cub3d *cub3d, int wall);
 void				free_str_tab(char **tab);
 void				free_exit(t_cub3d *cub3d, int status);
 void				clean_gnl(int fd);
-
-void				print(t_cub3d cub3d);
 // ---------------------------- end of file ---------------------------- //
 #endif

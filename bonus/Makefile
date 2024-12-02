@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 08:10:46 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/29 13:09:18 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/12/02 09:01:24 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,11 +22,6 @@ SRCDIR					=	./src
 INCDIR					=	./include
 
 # Sources
-# ANIMATION
-SRC_ANIMATION_DIR		=	animation
-SRC_ANIMATION_LIST		=	heart_animation.c
-SRC_ANIMATION			=	$(addprefix $(SRC_ANIMATION_DIR)/, $(SRC_ANIMATION_LIST))
-
 #GAME_ENGINE
 SRC_GAME_ENGINE_DIR		=	game_engine
 SRC_GAME_ENGINE_LIST	=	free_engine.c				\
@@ -48,12 +43,6 @@ SRC_INIT_LIST			=	init.c						\
 							windows.c
 SRC_INIT				=	$(addprefix $(SRC_INIT_DIR)/, $(SRC_INIT_LIST))
 
-# MINIMAP
-SRC_MINIMAP_DIR			=	minimap
-SRC_MINIMAP_LIST		=	minimap.c					\
-							player.c
-SRC_MINIMAP				=	$(addprefix $(SRC_MINIMAP_DIR)/, $(SRC_MINIMAP_LIST))
-
 # PARSING
 SRC_PARSING_DIR			=	parsing
 SRC_PARSING_LIST		=	check_texture.c				\
@@ -72,16 +61,40 @@ SRC_PLAYER_LIST			=	camera_rot.c				\
 							player_move.c
 SRC_PLAYER				=	$(addprefix $(SRC_PLAYER_DIR)/, $(SRC_PLAYER_LIST))
 
+# ANIMATION
+SRC_ANIMATION_DIR		=	animation
+SRC_ANIMATION_LIST		=	heart_animation.c
+SRC_ANIMATION			=	$(addprefix $(SRC_ANIMATION_DIR)/, $(SRC_ANIMATION_LIST))
+
+
+# HUD
+SRC_HUD_DIR				=	hud
+SRC_HUD_LIST			=	$(SRC_ANIMATION)			\
+							hud.c
+SRC_HUD					=	$(addprefix $(SRC_HUD_DIR)/, $(SRC_HUD_LIST))
+
+# MINIMAP
+SRC_MINIMAP_DIR			=	minimap
+SRC_MINIMAP_LIST		=	minimap.c					\
+							player.c
+SRC_MINIMAP				=	$(addprefix $(SRC_MINIMAP_DIR)/, $(SRC_MINIMAP_LIST))
+
 # RAYCASTING
 SRC_RAYCASTING_DIR		=	raycasting
 SRC_RAYCASTING_LIST		=	angle.c						\
 							checkers.c					\
 							draw_line.c					\
 							getters.c					\
-							getters_2.c					\
-							hud.c						\
+							getters_fc.c				\
 							render.c
 SRC_RAYCASTING			=	$(addprefix $(SRC_RAYCASTING_DIR)/, $(SRC_RAYCASTING_LIST))
+
+# RENDER
+SRC_RENDER_DIR			=	render
+SRC_RENDER_LIST			=	$(SRC_HUD)					\
+							$(SRC_MINIMAP)				\
+							$(SRC_RAYCASTING)
+SRC_RENDER				=	$(addprefix $(SRC_RENDER_DIR)/, $(SRC_RENDER_LIST))
 
 # UTILS
 SRC_UTILS_DIR			=	utils
@@ -90,14 +103,12 @@ SRC_UTILS_LIST			=	create_color.c				\
 							free_exit.c
 SRC_UTILS				=	$(addprefix $(SRC_UTILS_DIR)/, $(SRC_UTILS_LIST))
 
-SRC_LIST				=	$(SRC_ANIMATION)		\
-							$(SRC_GAME_ENGINE)		\
+SRC_LIST				=	$(SRC_GAME_ENGINE)		\
 							$(SRC_IMAGE)			\
 							$(SRC_INIT)				\
-							$(SRC_MINIMAP)			\
 							$(SRC_PARSING)			\
 							$(SRC_PLAYER)			\
-							$(SRC_RAYCASTING)		\
+							$(SRC_RENDER)			\
 							$(SRC_UTILS)			\
 							cub3d_bonus.c
 SRC						=	$(addprefix $(SRCDIR)/, $(SRC_LIST))

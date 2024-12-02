@@ -6,7 +6,7 @@
 #    By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/22 08:04:18 by sgabsi            #+#    #+#              #
-#    Updated: 2024/11/22 08:41:07 by sgabsi           ###   ########.fr        #
+#    Updated: 2024/12/02 09:16:39 by sgabsi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -104,7 +104,7 @@ NAME_OUTPUT					=	../$(NAME)
 
 # Compiler
 CC							=	cc
-CFLAGS						=	-Wall -Werror -Wextra -MMD #-g3 -fsanitize=address
+CFLAGS						=	-Wall -Werror -Wextra -MMD -g3 #-fsanitize=address
 OPTIONS						=	-I $(INCDIR) -I $(LIBFT_DIR)/includes -I $(MLX_DIR)
 LFLAGS						=	-L $(LIBFT_DIR) -L $(MLX_DIR) -lft -lmlx -lX11 -lXext -lm
 

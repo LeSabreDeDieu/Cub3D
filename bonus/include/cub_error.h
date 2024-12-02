@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:39:56 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/29 16:00:09 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 08:29:27 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ enum e_error
 
 // -------------------------- define section -------------------------- //
 # define ERROR_MSG "Error\n"
+# define ERROR_MLX_PTR "Failed to initialize mlx pointer"
+# define ERROR_MLX_WIN "Failed to create window"
 # define ERROR_OPENFILE "Failed to open file"
 # define ERROR_NOTCUB "File is not a .cub file"
 # define ERROR_MALLOC "Failed to allocate memory"

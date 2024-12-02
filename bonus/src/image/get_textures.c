@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:15:17 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/29 10:50:05 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 09:39:04 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	load_texture(t_cub3d *cub3d)
 			cub3d->texture[i]->img = NULL;
 		i++;
 	}
-	cub3d->hud.hotbar = set_image(cub3d, "./ressources/hud/Hotbar.xpm");
+	cub3d->hud.hotbar = set_image(cub3d, HOTBAR_PATH);
 	if (!cub3d->hud.hotbar)
 		exit_on_error(cub3d, ERROR_TEXTURE);
-	cub3d->hud.heart = set_image(cub3d, "./ressources/hud/heart.xpm");
+	cub3d->hud.heart = set_image(cub3d, HEART_PATH);
 	if (!cub3d->hud.heart)
 		exit_on_error(cub3d, ERROR_TEXTURE);
 }

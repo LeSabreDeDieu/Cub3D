@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/30 12:18:34 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 09:35:37 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,18 @@
 # include <stdio.h>
 // -------------------------- define section -------------------------- //
 # define WIDTH 1080
-# define HEIGHT 1080
+# define HEIGHT 720
 
 # define PI 3.14159265359
 
 /*
-	MAC SAYF PARAMS : MOVESPEED = 2, ROTSPEED = 0.04
 	DELL PARAMS : MOVESPEED = 1, ROTSPEED = 0.01
 	MAC PARAMS : MOVESPEED = 4, ROTSPEED = 0.05
 */
 # define FOV 60
 # define TILE_SIZE 32
-# define MOVE_SPEED 4
-# define ROT_SPEED 0.1
+# define MOVE_SPEED 1
+# define ROT_SPEED 0.01
 # define FPS 60
 # define FRAME_TIME 16.67
 // -------------------------- enum section -------------------------- //
@@ -132,7 +131,7 @@ void				skip_spaces(char **str);
 
 // UTILS
 size_t				ft_strlen_not_whitespace(const char *s);
-void				check_chars(t_cub3d *data, char *map_copy, char *map_orig);
+void				check_chars(t_cub3d *data, char *map_orig, char *map_copy);
 void				get_player_pos(t_cub3d *data);
 void				raycast(t_cub3d *cub3d);
 
@@ -163,7 +162,5 @@ int					get_color(t_cub3d *cub3d, int wall);
 void				free_str_tab(char **tab);
 void				free_exit(t_cub3d *cub3d, int status);
 void				clean_gnl(int fd);
-
-void				print(t_cub3d cub3d);
 // ---------------------------- end of file ---------------------------- //
 #endif

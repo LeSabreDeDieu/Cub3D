@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 11:09:47 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/30 12:21:15 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 08:54:16 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,8 @@ void	init_project(t_cub3d *cub3d, char *argv[])
 	get_all_texture(cub3d, fd);
 	check_texture(cub3d, fd);
 	get_check_valid_map(cub3d, fd);
-	close(fd);
 	windows_init(cub3d);
 	load_texture(cub3d);
 	create_img(cub3d, &cub3d->img, WIDTH, HEIGHT);
 	create_img(cub3d, &cub3d->hud.heart_animation, 180, 23);
-	//mlx_mouse_hide(cub3d->mlx_ptr, cub3d->win_ptr);
 }

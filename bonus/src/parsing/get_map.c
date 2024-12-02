@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 13:54:19 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/29 10:27:51 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 09:27:06 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,14 @@ char	*get_map(int fd)
 		else
 		{
 			tmp = ft_strjoin(map, line);
+			if (!tmp)
+				return (free(map), free(line), NULL);
 			free(map);
 			free(line);
 			map = tmp;
 		}
 	}
+	close(fd);
 	return (map);
 }
 
@@ -108,6 +111,8 @@ void	get_check_valid_map(t_cub3d *cube3d, int fd)
 	char	*map_tmp_copy;
 
 	map_tmp = get_map(fd);
+	if (!map_tmp)
+		exit_on_error(cube3d, ERROR_MAP);
 	map_tmp_copy = map_tmp;
 	skip_spaces(&map_tmp_copy);
 	check_chars(cube3d, map_tmp, map_tmp_copy);

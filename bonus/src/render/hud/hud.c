@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 08:24:35 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/29 14:28:59 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 08:58:32 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,32 +47,41 @@ void	draw_hotbar(t_cub3d *cub3d)
 	}
 }
 
-static void	draw_heart(t_cub3d *cub3d, t_img *heart, int heart_width)
+static void	put_pixel_heart(t_cub3d *cub3d, t_img *heart, t_pos pos,
+		int heart_width)
+{
+	int		color;
+	t_img	*hotbar;
+
+	color = 0;
+	hotbar = cub3d->hud.hotbar;
+	while (pos.x < heart->width)
+	{
+		if (pos.y >= 0)
+			color = get_texture_color_hud(heart, pos.x, pos.y);
+		if (color == 0)
+			my_mlx_pixel_put(&cub3d->hud.heart_animation, pos.x + heart_width,
+				pos.y + 5, get_texture_color_hud(&cub3d->img, pos.x + (WIDTH
+						/ 2) - (hotbar->width / 2) + heart_width, pos.y + HEIGHT
+					- hotbar->height - 10 - heart->height));
+		else if (color != 0 && pos.y >= 0)
+			my_mlx_pixel_put(&cub3d->hud.heart_animation, pos.x + heart_width,
+				pos.y + 5, get_texture_color_hud(heart, pos.x, pos.y));
+		pos.x++;
+	}
+}
+
+void	draw_heart(t_cub3d *cub3d, t_img *heart, int heart_width)
 {
 	t_pos	pos;
-	t_img	*hotbar;
 	int		color;
 
 	pos.y = -5;
-	hotbar = cub3d->hud.hotbar;
 	color = 0;
 	while (pos.y < heart->height)
 	{
 		pos.x = 0;
-		while (pos.x < heart->width)
-		{
-			if (pos.y >= 0)
-				color = get_texture_color_hud(heart, pos.x, pos.y);
-			if (color == 0)
-				my_mlx_pixel_put(&cub3d->hud.heart_animation, pos.x
-					+ heart_width, pos.y + 5, get_texture_color_hud(&cub3d->img,
-						pos.x + (WIDTH / 2) - (hotbar->width / 2) + heart_width,
-						pos.y + HEIGHT - hotbar->height - 10 - heart->height));
-			else if (color != 0 && pos.y >= 0)
-				my_mlx_pixel_put(&cub3d->hud.heart_animation, pos.x
-					+ heart_width, pos.y + 5, get_texture_color_hud(heart, pos.x, pos.y));
-			pos.x++;
-		}
+		put_pixel_heart(cub3d, heart, pos, heart_width);
 		pos.y++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 08:49:56 by aditer            #+#    #+#             */
-/*   Updated: 2024/11/29 13:30:08 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 09:37:43 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 // -------------------------- define section -------------------------- //
 typedef struct s_cub3d	t_cub3d;
+
+# define HOTBAR_PATH "./ressources/hud/Hotbar.xpm"
+# define HEART_PATH "./ressources/hud/heart.xpm"
 
 // ---------------------------- image struct ---------------------------- //
 typedef struct s_img

@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:26:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/30 12:21:40 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 08:46:32 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	check_color(t_texture_map *texture[6], int i)
 	int		k;
 
 	split = ft_split(texture[i]->path, ',');
-	if (!split || !split[0] || !split[1] || !split[2] || split[3])
+	if (!split || !split[0] || !split[1] || !split[2])
 		return (free_str_tab(split), FAILURE);
 	j = -1;
 	while (++j < 3)

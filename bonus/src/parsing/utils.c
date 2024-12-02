@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 10:46:12 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/11/22 08:37:03 by sgabsi           ###   ########.fr       */
+/*   Updated: 2024/12/02 09:30:58 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,18 @@ size_t	ft_strlen_not_whitespace(const char *s)
 	return (i);
 }
 
-static void	verif_nb_chars(t_cub3d *data, int count_player)
+static void	verif_nb_chars(t_cub3d *data, int count_player, char *map_orig)
 {
 	if (count_player < 1)
+	{
+		free(map_orig);
 		exit_on_error(data, ERROR_MAP_PLAYER_NONE);
+	}
 	if (count_player > 1)
+	{
+		free(map_orig);
 		exit_on_error(data, ERROR_MAP_PLAYER_MULTIPLE);
+	}
 }
 
 static void	char_counter(char *map, int *count_player, int i)
@@ -54,11 +60,11 @@ void	check_chars(t_cub3d *data, char *map_orig, char *map_copy)
 	i = 0;
 	count_player = 0;
 	chars = "01NSEW \t\n\v\f\r";
-	while (map_copy[i])
+	while (map_copy && map_copy[i])
 	{
 		is_in_list(data, map_copy[i], chars, map_orig);
 		char_counter(map_copy, &count_player, i);
 		i++;
 	}
-	verif_nb_chars(data, count_player);
+	verif_nb_chars(data, count_player, map_orig);
 }
