@@ -1,5 +1,22 @@
-# Cub3D
+![Minishell](https://github.com/user-attachments/assets/bc9d3626-f764-40b8-ac2c-9750540e6f1b)
+<h1 align="center">
+	42 Project - Cube3D
+</h1>
 
+<p align="center">
+	<b><i> My first RayCaster with miniLibX </i></b>
+</p>
+
+<p align="center">
+	<img src="https://raw.githubusercontent.com/ayogun/42-project-badges/refs/heads/main/badges/minishelle.png" alt="mimishell_logo" />
+</p>
+
+---
+<p align="center">
+	<img src="https://img.shields.io/badge/Score-120-green?style=flat-square&logo=42" alt="Score project :125"/>
+	<img alt="Static Badge" src="https://img.shields.io/badge/Outstanding-0-blue?style=flat-square&logo=42">
+	<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/LeSabreDeDieu/Cub3D?style=flat-square&logo=github">
+</p>
 # Description
 Cub3D est un projet de jeu en 3D basé sur le moteur graphique miniLibX. Il s'agit d'une interprétation simple d'un jeu de type Wolfenstein, où le joueur peut se déplacer dans un labyrinthe et interagir avec son environnement.
 
