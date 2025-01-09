@@ -17,6 +17,7 @@
 	<img alt="Static Badge" src="https://img.shields.io/badge/Outstanding-0-blue?style=flat-square&logo=42">
 	<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/LeSabreDeDieu/Cub3D?style=flat-square&logo=github">
 </p>
+
 # Description
 Cub3D est un projet de jeu en 3D basé sur le moteur graphique miniLibX. Il s'agit d'une interprétation simple d'un jeu de type Wolfenstein, où le joueur peut se déplacer dans un labyrinthe et interagir avec son environnement.
 
