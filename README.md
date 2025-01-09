@@ -51,12 +51,12 @@ cd Cub3D
 make
 ```
 
-## Utilisation
+## Usage
 
 To launch the game, run the generated binary :
 
 ```sh
-./cub3D [chemin_vers_fichier_carte]
+./cub3D [path_to_map_file]
 ```
 
 Ensure that you provide a valid map file as an argument. Map files must adhere to the specific format "file.ber" to be correctly interpreted by the game.
