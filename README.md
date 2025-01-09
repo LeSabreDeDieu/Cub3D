@@ -1,6 +1,6 @@
 ![Minishell](https://github.com/user-attachments/assets/bc9d3626-f764-40b8-ac2c-9750540e6f1b)
 <h1 align="center">
-	42 Project - Cube3D
+	42 Project - Cub3D
 </h1>
 
 <p align="center">
@@ -19,22 +19,23 @@
 </p>
 
 # Description
-Cub3D est un projet de jeu en 3D basé sur le moteur graphique miniLibX. Il s'agit d'une interprétation simple d'un jeu de type Wolfenstein, où le joueur peut se déplacer dans un labyrinthe et interagir avec son environnement.
+Cub3D is a 3D game project based on the miniLibX graphics engine. It is a simple interpretation of a Wolfenstein-type game, where the player can move through a maze and interact with the environment.
 
 ## Table des matières
-- [Prérequis](#prérequis)
-- [Installation](#installation)
-- [Utilisation](#utilisation)
-- [Fonctionnalités](#fonctionnalités)
+- [Prerequisites](#Prerequisites)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Features](#Features)
 
-## Prérequis
+## Prerequisites
 
-Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur votre machine :
+Before you begin, make sure you have the following installed on your machine:
 
-- Un système d'exploitation Unix (MacOS, Linux)
-- gcc ou un autre compilateur C
+- A Unix operating system (MacOS, Linux)
+- gcc or another C compiler
 - make
-- La bibliothèque miniLibX
+- The miniLibX library
+- The libft that you can get it [here](https://github.com/LeSabreDeDieu/libft)
 
 ## Installation
 
