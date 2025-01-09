@@ -13,10 +13,10 @@ Cub3D est un projet de jeu en 3D basé sur le moteur graphique miniLibX. Il s'ag
 
 Avant de commencer, assurez-vous d'avoir les éléments suivants installés sur votre machine :
 
-    Un système d'exploitation Unix (MacOS, Linux)
-    gcc ou un autre compilateur C
-    make
-    La bibliothèque miniLibX
+- Un système d'exploitation Unix (MacOS, Linux)
+- gcc ou un autre compilateur C
+- make
+- La bibliothèque miniLibX
 
 ## Installation
 
