@@ -35,7 +35,7 @@ Before you begin, make sure you have the following installed on your machine:
 - gcc or another C compiler
 - make
 - The miniLibX library
-- The libft that you can get it [here](https://github.com/LeSabreDeDieu/libft)
+- The libft library is required and can be obtained from [here](https://github.com/LeSabreDeDieu/libft).
 
 ## Installation
 
