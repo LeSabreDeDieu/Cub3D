@@ -14,8 +14,8 @@
 ---
 <p align="center">
 	<img src="https://img.shields.io/badge/Score-120-darkgreen?style=none&logo=42" alt="Score project :125"/>
-	<img alt="Static Badge" src="https://img.shields.io/badge/Outstanding-0-blue?style=flat-square&logo=42">
-	<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/LeSabreDeDieu/Cub3D?style=flat-square&logo=github">
+	<img alt="Static Badge" src="https://img.shields.io/badge/Outstanding-0-blue?style=none&logo=42">
+	<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/LeSabreDeDieu/Cub3D?style=none&logo=github">
 </p>
 
 # Description
