@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-	<img src="https://raw.githubusercontent.com/ayogun/42-project-badges/refs/heads/main/badges/minishelle.png" alt="mimishell_logo" />
+	<img src="https://raw.githubusercontent.com/ayogun/42-project-badges/refs/heads/main/badges/cub3dm.png" alt="mimishell_logo" />
 </p>
 
 ---
