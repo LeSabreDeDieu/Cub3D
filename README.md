@@ -39,13 +39,13 @@ Before you begin, make sure you have the following installed on your machine:
 
 ## Installation
 
-1. Clonez le dépôt sur votre machine locale :
+1. Clone the repository to your local machine :
 
 ```sh
 git clone https://github.com/LeSabreDeDieu/Cub3D.git
 cd Cub3D
 ```
-2. Ensuite, compilez le projet en utilisant make :
+2. Then compile the project using make :
 
 ```sh
 make
@@ -53,18 +53,18 @@ make
 
 ## Utilisation
 
-Pour lancer le jeu, exécutez le binaire généré :
+To launch the game, run the generated binary :
 
 ```sh
 ./cub3D [chemin_vers_fichier_carte]
 ```
 
-Assurez-vous d'avoir un fichier de carte valide en tant qu'argument. Les fichiers de carte doivent suivre un format spécifique pour être interprétés correctement par le jeu.
+Ensure that you provide a valid map file as an argument. Map files must adhere to the specific format "file.ber" to be correctly interpreted by the game.
 
-## Fonctionnalités
+## Features
 
-- Mouvement en temps réel dans un environnement 3D
-- Collision avec les murs
-- Affichage de textures sur les murs
-- Gestion des entrées clavier pour le déplacement et l'interaction
+- Real-time movement in a 3D environment
+- Collision with walls
+- Texture rendering on walls
+- Keyboard input handling for movement and interaction
 
