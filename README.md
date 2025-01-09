@@ -68,3 +68,8 @@ Ensure that you provide a valid map file as an argument. Map files must adhere t
 - Texture rendering on walls
 - Keyboard input handling for movement and interaction
 
+### Credits
+
+Thanks to [**Luma-3**](https://github.com/luma-3) and [**MonsieurC**](https://github.com/monsieurCanard) for the image banner.
+
+This work is published under the terms of **[42 Unlicense](https://github.com/gcamerli/42unlicense)**.
