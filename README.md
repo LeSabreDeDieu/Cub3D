@@ -42,7 +42,7 @@ Before you begin, make sure you have the following installed on your machine:
 1. Clone the repository to your local machine :
 
 ```sh
-git clone https://github.com/LeSabreDeDieu/Cub3D.git
+git clone --recursive https://github.com/LeSabreDeDieu/Cub3D.git
 cd Cub3D
 ```
 2. Then compile the project using make :
