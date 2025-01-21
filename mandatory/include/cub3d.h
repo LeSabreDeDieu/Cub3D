@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 08:16:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/12/02 09:35:37 by sgabsi           ###   ########.fr       */
+/*   Updated: 2025/01/21 16:09:41 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,6 +161,5 @@ int					get_color(t_cub3d *cub3d, int wall);
 // free
 void				free_str_tab(char **tab);
 void				free_exit(t_cub3d *cub3d, int status);
-void				clean_gnl(int fd);
 // ---------------------------- end of file ---------------------------- //
 #endif

@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 09:49:05 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/12/02 09:13:42 by sgabsi           ###   ########.fr       */
+/*   Updated: 2025/01/21 16:09:37 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ void	get_all_texture(t_cub3d *cub3d, int fd)
 		cub3d->texture[i] = get_texture(fd);
 		if (!cub3d->texture[i])
 		{
-			clean_gnl(fd);
 			close(fd);
 			exit_on_error(cub3d, ERROR_TEXTURE);
 		}

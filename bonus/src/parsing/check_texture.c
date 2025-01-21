@@ -6,7 +6,7 @@
 /*   By: sgabsi <sgabsi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 12:26:21 by sgabsi            #+#    #+#             */
-/*   Updated: 2024/12/02 08:46:32 by sgabsi           ###   ########.fr       */
+/*   Updated: 2025/01/21 16:09:39 by sgabsi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,17 +109,17 @@ void	check_texture(t_cub3d *cub3d, int fd)
 	}
 	if (is_right_name(cub3d->texture) == FAILURE)
 	{
-		(clean_gnl(fd), close(fd));
+		close(fd);
 		exit_on_error(cub3d, ERROR_WRONG_TEXTURE);
 	}
 	if (is_in_double(cub3d->texture) == FAILURE)
 	{
-		(clean_gnl(fd), close(fd));
+		close(fd);
 		exit_on_error(cub3d, ERROR_DOUBLE_TEXTURE);
 	}
 	if (color_is_valid(cub3d->texture) == FAILURE)
 	{
-		(clean_gnl(fd), close(fd));
+		close(fd);
 		exit_on_error(cub3d, ERROR_COLOR);
 	}
 }
